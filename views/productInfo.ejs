@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidesssrt</title>
+    <link href="https://api.fontshare.com/v2/css?f[]=gambetta@400,1,300,600,701,2,501,401,301,601,500,700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Satisfy&display=swap" rel="stylesheet">
+
+    <script src="/js/jquery-3.7.0.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <script src="/js/bootstrap.bundle.js"></script>
+    <script src="/js/script.js"></script>
+
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/nav_footer.css">
+    <link rel="stylesheet" href="/css/productInfo.css">
+    <script src="/js/product_info.js"></script>
+</head>
+
+<body id="body">
+    <%- include("./nav.ejs") %>
+        <div id="headerPage" class="page-top-position"></div>
+        <!-- 麵包屑 -->
+        <ul class="breadcrumb">
+            <li><a href="/product">精選禮盒</a></li>
+            <li>禮盒資訊</li>
+        </ul>
+
+        <!-- 產品資訊 -->
+        <figure class="mainContainer">
+            <div class="imgOutsideContainer">
+                <div class="imgLContainer">
+                    <div>
+                        <img id="sidePic1" onClick="JavaScript: changeImg(1)" src="/pic/product/pd1_pic1.png">
+                    </div>
+                    <div>
+                        <img id="sidePic2" onClick="JavaScript: changeImg(2)" src="/pic/product/pd1_pic2.png">
+                    </div>
+                    <div>
+                        <img id="sidePic3" onClick="JavaScript: changeImg(3)" src="/pic/product/pd1_pic3.png">
+                    </div>
+                    <div>
+                        <img id="sidePic4" onClick="JavaScript: changeImg(4)" src="/pic/product/pd1_pic4.png">
+                    </div>
+                </div>
+                <div class="imgRContainer">
+                    <img id="mainPic" src="/pic/product/pd1_pic1.png">
+                </div>
+            </div>
+            <div class="imgInfoContainer">
+                <p class="imgInfoTitle" id="p_title">彤粉情人節禮盒</p>
+                <div id="p_text" class='imgInfoText'>
+                    <%- product_info[0].pd_content %>
+                </div>
+                <div id="p_price" class="productInfoPrice">NT$ <%- product_info[0].p_price %></div>
+                <div class="productCount">
+                    <div onclick="minus()" id="productCount_minus">-</div>
+                    <div id="productCount"></div>
+                    <div onclick="plus()" id='productCount_plus'>+</div>
+                </div>
+                <form style="display: flex;" action="/product/productInfo" method="post" id="submit_form">
+                    <input type="text" style="display: none" name="product_quantity" id="productCount_input">
+                    <button style="margin: auto; " type="submit" class="addtocart" id="addtocart">加入購物車</button>
+                </form>
+            </div>
+        </figure>
+
+        <hr class="hr_line">
+
+        <!-- 產品詳細敘述 -->
+        <div class="discriptionContainer">
+            <div id="tab1" onClick="JavaScript:selectTab(1), selectTabStyle(1);">商品描述</div>
+            <div id="tab2" onClick="JavaScript:selectTab(2), selectTabStyle(2);">送貨及付款方式</div>
+        </div>
+        <div id="tab1Content">
+            <h3>｜點心品項｜Pâtisserie & Biscuits</h3>
+            <p>
+                <%- product_info[0].pd_describe_contents %>
+            </p>
+            <h3>｜產品規格｜Spec.</h3>
+            <p>
+                彤粉情人節精裝禮盒及提袋
+            </p>
+            <h3>｜最佳賞味期限｜Best Before</h3>
+            <p>
+                可保存12天。請見商品標示日期。
+                開封後請儘速食用完畢。
+            </p>
+            <h3>｜運送｜ Shipping</h3>
+            <p>
+                採用宅配配送，
+                週日不做配送，配送時間可選擇上午（9:00-13:00)，下午（14:00-18:00)
+            </p>
+            <h3>｜訂購注意事項｜Notice</h3>
+            <p>
+                - 商品因全程手工新鮮製作，訂單成立後，製作需4-7個工作天，黑貓宅配也需1-2天配送至您指定的地點。故共需5-9天。<br>
+                - 如有大量訂購的需求，訂單成立後，製作需10-15個工作天，黑貓宅配也需1-2天配送至您指定的地點。故共需11-17天。
+                提醒您要提前預留到貨時間。<br>
+                - 若訂單爆量時，會另行公告並電話或E-mail通知。<br>
+                - 蛋糕宅配有一定風險，車體運送途中可能造成蛋糕左右位移3~5cm。蛋糕位移、側邊損傷或裝飾掉落、微損，均不在毀壞補償範圍內
+                ，風險須自行承擔。<br>
+                - 糕點皆無添加防腐劑，天氣炎熱建議放置室內涼爽空間或冷藏保存，因無法確認保存情況，商品收到後5天將不接受因糕點變異而退貨。<br>
+                - 無法回收再販售的生鮮商品，不適用消保法7日無條件退貨<br>
+                - 急單請電洽詢門市人員 04-5527727，將會與您確認出貨相關事宜。<br>
+            </p>
+
+        </div>
+        <div id="tab2Content">
+            <h3>送貨方式</h3>
+            <p>
+                宅配到府<br>
+            </p>
+            <h3>付款方式</h3>
+            <p><!-- 信用卡付款<br>
+                銀行轉帳／ATM - 匯款完畢請備註『帳號後五碼』 -->
+                貨到付款
+            </p>
+        </div>
+
+        <!-- 推薦商品欄位 -->
+        <hr class="hr_second_line">
+        <p class="recommend_product_p">推薦商品</p>
+
+        <div class="carousel">
+            <div class="slider_width">
+                <% for(let i=0; i < 3; i++) {%>
+                    <% var random_recommend = Math.floor(Math.random()*7) + 1 %>
+                    <% if( i === 0){ %>
+                        <div class="slider_card">
+                            <img src="/pic/product/pd<%= random_recommend %>_pic1.png" alt="" id="recommend_img1">
+                            <div><%- product[random_recommend-1].pd_name %></div>
+                            <div>NT$ <%- product[random_recommend-1].p_price %></div>
+                        </div>
+                        <% var temp1 = random_recommend %>
+                    <% } else if( i === 1 ) {%>
+                        <% while( temp1 === random_recommend) {%>
+                            <% random_recommend = Math.floor(Math.random()*7) + 1 %>
+                        <% } %>
+                        <div class="slider_card">
+                            <img src="/pic/product/pd<%= random_recommend %>_pic1.png" alt="" id="recommend_img1">
+                            <div><%- product[random_recommend-1].pd_name %></div>
+                            <div>NT$ <%- product[random_recommend-1].p_price %></div>
+                        </div>
+                        <% var temp2 = random_recommend %>
+                    <% } else {%>
+                            <% while( temp1 === random_recommend || temp2 === random_recommend) {%>
+                                <% random_recommend = Math.floor(Math.random()*7) + 1 %>
+                            <% } %>
+                        <div class="slider_card">
+                            <img src="/pic/product/pd<%= random_recommend %>_pic1.png" alt="" id="recommend_img1">
+                            <div><%- product[random_recommend-1].pd_name %></div>
+                            <div>NT$ <%- product[random_recommend-1].p_price %></div>
+                        </div>
+                    <% } %>
+                <% } %>
+            </div>
+        </div>
+        <!-- 頁腳 -->
+        <%- include("./footer.ejs") %>
+
+</body>
+
+</html>

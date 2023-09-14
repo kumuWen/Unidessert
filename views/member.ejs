@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UniDessert</title>
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/member.css" />
+  </head>
+  <body class="member_body">
+    <%-include('nav') %>
+    <section class="mt-130 container-uni page-top-position">
+      <div class="row-uni member_section">
+        <aside class="col-12-uni col-md-3-uni col-lg-2-uni">
+          <div class="member_linkleft row">
+            <a class="active" href="/member">基本資料</a
+            ><a href="/order">訂單紀錄</a>
+          </div>
+        </aside>
+        <div
+          class="container-uni col-12-uni col-md-9-uni col-lg-10-uni tab_content active"
+          id=""
+        >
+          <div class="member_link mb-2-uni">
+            <a class="active member_link_border_left" href="/member"
+              >基本資料</a
+            >
+          </div>
+          <form
+            class="tab_content active"
+            id="member_form"
+            action="/member"
+            method="post"
+          >
+            <div class="container-uni">
+              <div class="mb-3 row">
+                <label class="member_label col-4-uni" for="uemail"
+                  >電子信箱</label
+                >
+                <div class="col-8-uni">
+                  <p class="member_text"><%=userData.uemail %></p>
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label class="member_label col-4-uni" for="uname"
+                  >會員姓名</label
+                >
+                <div class="col-8-uni">
+                  <input
+                    class="member_input"
+                    type="text"
+                    placeholder=""
+                    id="uname"
+                    name="uname"
+                    required=""
+                    value="<%=userData.uname %>"
+                  />
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label class="member_label col-4-uni" for="umobile"
+                  >手機號碼</label
+                >
+                <div class="col-8-uni">
+                  <input
+                    class="member_input"
+                    type="tel"
+                    placeholder="請輸入手機號碼 範例:0955-343-685"
+                    id="umobile"
+                    pattern="09\d{2}-\d{3}-\d{3}"
+                    name="umobile"
+                    required
+                    value="<%= userData.umobile %>"
+                  />
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label class="member_label col-4-uni" for="ubirth"
+                  >生日&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label
+                >
+                <div class="col-8-uni">
+                  <input
+                    class="member_input"
+                    type="date"
+                    id="ubirth"
+                    required=""
+                    name="ubirth"
+                    value="<%= userData.ubirth %>"
+                  />
+                </div>
+              </div>
+              <div class="mb-5 row-nowrap justify-content-sm-end">
+                <div class="col-3 row-nowrap justify-content-sm-center">
+                  <!-- <input class="member_sub col-lg-6-uni" type="submit" value="確認"> -->
+                  <input
+                    class="member_sub col-lg-6-uni"
+                    type="submit"
+                    value="修改"
+                  />
+                </div>
+              </div>
+            </div>
+          </form>
+          <!-- <form class="tab_content" id="tab2">
+            <div class="container-uni">
+              <div class="mb-3 row">
+                <label class="member_label col-4-uni " for="upwd">請輸入舊密碼</label>
+                <div class="col-8-uni">
+                  <input class="member_input" type="password" placeholder="請輸入舊密碼" id="upwd" required="">
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label class="member_label col-4-uni " for="upwd">輸入新密碼</label>
+                <div class="col-8-uni">
+                  <input class="member_input" type="password" placeholder="輸入新密碼" id="upwd" required="">
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label class="member_label col-4-uni " for="upwd">再次輸入新密碼</label>
+                <div class="col-8-uni">
+                  <input class="member_input" type="password" placeholder="再次輸入新密碼" id="upwd" required="">
+                </div>
+              </div>
+              <div class="mb-3 row">
+                <label class="member_label col-4-uni " for="upwd">輸入驗證碼</label>
+                <div class="col-8-uni">
+                  <input class="member_input" type="password" placeholder="再次輸入新密碼" id="upwd" required="">
+                </div>
+              </div>
+              <div class="mb-5 row-nowrap justify-content-sm-end ">
+                <div class="col-3 row-nowrap justify-content-sm-center">
+                  <input class="member_sub col-lg-6-uni" type="submit" value="取消">
+                  <input class="member_sub col-lg-6-uni" type="submit" value="確認">
+                </div>
+              </div>
+            </div>
+          </form> -->
+        </div>
+      </div>
+    </section>
+    <%-include('footer') %>
+    <a class="page-top" href="#">TOP</a>
+    <script>
+          $(document).ready(function () {
+            $("#member_form").on("submit", function (e) {
+              e.preventDefault();
+              var uname = document.getElementById("uname").value;
+              var umobile = document.getElementById("umobile").value;
+              var ubirth = document.getElementById("ubirth").value;
+              var data = {
+                uname: uname,
+                umobile: umobile,
+                ubirth: ubirth,
+              };
+              console.log(data);
+              $.ajax({
+                url: "http://localhost:5678/member",
+                method: "post",
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                success: function (res) {
+                  if (res.success) {
+                    alert("更新成功！");
+                  } else {
+                    console.log("更新失敗");
+                  }
+                  },
+                  error: function (error) {
+                    console.log("大失敗");
+                  }
+              });
+            });
+          });
+    </script>
+    <script src="/js/bootstrap.bundle.js"></script>
+    <script src="/js/jquery-3.7.0.min.js"></script>
+    <script src="/js/script.js"></script>
+  </body>
+</html>

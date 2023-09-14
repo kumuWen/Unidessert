@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidesssrt</title>
+    <link href="https://api.fontshare.com/v2/css?f[]=gambetta@400,1,300,600,701,2,501,401,301,601,500,700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Satisfy&display=swap" rel="stylesheet">
+
+    <script src="/js/jquery-3.7.0.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <script src="/js/bootstrap.bundle.js"></script>
+    <script src="/js/script.js"></script>
+
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/nav_footer.css">
+</head>
+
+<body id="body">
+    <%- include("./nav.ejs") %>
+        <!-- <div id="headerPage" class="page-top-position"></div> -->
+        <figure class="topPic_container">
+            <img src="/pic/product/product_banner.png" class="topPic" alt="dessert_picture">
+        </figure>
+        <h1 class="valentine_set_title">情人節禮盒</h1>
+        <section>
+            <a class="row_container" href="product/productInfo">
+                <% for( let i=0; i < p_info.length; i++){ %>
+                    <div class="column_container" onclick="">
+                        <div class="productPic_container">
+                            <img class="productPic" src=<%=p_info[i].p_pic %> alt="">
+                        </div>
+                        <div class="productText">
+                            <%= p_info[i].pd_name %>
+                        </div>
+                        <div class="productPrice">NT <%= p_info[i].p_price %>
+                        </div>
+                    </div>
+                    <% } %>
+                </a>
+        </section>
+        <%- include("./footer.ejs") %>
+        <link rel="stylesheet" href="/css/product.css">
+</body>

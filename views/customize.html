@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidesssrt</title>
+    <link href="https://api.fontshare.com/v2/css?f[]=gambetta@400,1,300,600,701,2,501,401,301,601,500,700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Satisfy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../media/css/bootstrap.css">
+    <script src="../media/js/bootstrap.bundle.js"></script>
+    <script src="../media/js/jquery-3.7.0.min.js"></script>
+    <script src="../media/js/script.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+ 
+
+    <!-- 這邊css之後要獨立 -->
+    <style>
+        .step_img {
+            margin-bottom: 8%;
+            margin-top: 5%
+        }
+
+        .stepbar {
+            width: 30%;
+        }
+
+        #stepbar {
+            background-color: #EADFD9;
+        }
+
+        /* 整個stepbar */
+        .stepdiv {
+            color: #B44A60;
+            font-size: 2rem;
+        }
+
+        .homeblock {
+            color: #B44A60;
+        }
+
+        .homeblock2 {
+            margin-top: 100px;
+        }
+
+        /* 整個body都同樣背景色 同樣字體*/
+        .allcontent {
+            background-color: #EADFD9;
+            font-family: 'gambetta', 'noto sans tc';
+        }
+
+        /* 設定選項的照片大小 */
+        .cookies {
+            width: 75px;
+        }
+
+
+        #cardinput {
+            width: 100%;
+            height: 80px;
+            font-size: 1rem;
+            background-color: #EADFD9;
+            border: solid 1px #B44A60;
+
+        }
+
+        .btn1 {
+            background-color: #F0C7CD;
+            color: #702F43;
+            font-size: 2rem;
+            width: 250px;
+            border: solid #702F43;
+            border-width: 5px;
+            border-radius: 9px;
+            text-align: center;
+            text-decoration: none;
+
+        }
+
+        .btn2 {
+            background-color: #702F43;
+            color: #EADFD9;
+            width: 100px;
+            border-radius: 5px;
+            font-size: 1.5rem;
+        }
+
+
+        .stepblock {
+            font-size: 2.5rem;
+
+        }
+
+        .count {
+            margin-bottom: 8%;
+        }
+
+        .step4 {
+            margin-bottom: 8%;
+        }
+
+        .seldessert4 {
+            background-color: #B09476;
+            opacity: 56%;
+            width: 300px;
+            height: 300px;
+            padding: 10px;
+            border: 15px solid #D4C4B3;
+            float: left;
+
+        }
+
+        .seldessert9 {
+            background-color: #B09476;
+            opacity: 56%;
+            width: 200px;
+            height: 200px;
+            padding: 10px;
+            border: 15px solid #D4C4B3;
+            float: left;
+
+        }
+
+        .box9 {
+            display: none;
+            grid-template-columns: 200px 200px 200px;
+        }
+
+        .box4 {
+            display: grid;
+            grid-template-columns: 300px 300px;
+        }
+
+        blockquote {
+            height: 400px;
+            background: #eee;
+            border-radius: 5px;
+            margin: 16px 0;
+        }
+
+        blockquote p {
+            padding: 15px;
+        }
+
+        cite {
+            margin: 16px 32px;
+            font-weight: bold;
+        }
+
+        .dragging {
+            opacity: 0.4;
+        }
+
+        .hover {
+            background-color: #9e7140;
+        }
+
+        /* 拖動到4格的img會變比較大，9個的比較小 */
+        .drag_img_for_box4 {
+            width: 250px;
+        }
+
+        .drag_img_for_box9 {
+            width: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="allcontent">
+        <!-- header -->
+        <div class="headerPage" class="page-top-position"></div>
+
+
+        <!-- 步驟的bar1 -->
+        <div class="step_img">
+            <img class="w-100" src="../media/pic/customize/stepbar6.png">
+        </div>
+
+        <!-- 開始按鈕 -->
+        <div class="row">
+            <div class="col-lg-12 d-flex justify-content-center">
+                <a href="#step1"><button class="btn1">Start</button></a>
+            </div>
+        </div>
+        <br>
+
+        <!-- 步驟1的槓槓 -->
+        <div id="step1"></div>
+        <div class="homeblock2 "></div>
+
+        <div class="container-md homeblock ">
+            <br class="p-2">
+            <p class=" d-flex justify-content-center  stepblock">Step1 挑選大小＆內容物</p>
+            <hr class="p-2">
+        </div>
+        <!-- 步驟1 -->
+        <div class="container stepdiv">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div id="box_4" class="col-lg-6 box4">
+                    <div class="seldessert4 box"></div>
+                    <div class="seldessert4 box"></div>
+                    <div class="seldessert4 box"></div>
+                    <div class="seldessert4 box"></div>
+                </div>
+
+                <div id="box_9" class="col-lg-6 box9">
+                    <div class="seldessert9 box"></div>
+                    <div class="seldessert9 box"></div>
+                    <div class="seldessert9 box"></div>
+                    <div class="seldessert9 box"></div>
+                    <div class="seldessert9 box"></div>
+                    <div class="seldessert9 box"></div>
+                    <div class="seldessert9 box"></div>
+                    <div class="seldessert9 box"></div>
+                    <div class="seldessert9 box"></div>
+                </div>
+                <div class="col-lg-6 ">
+                    <form action="" class="">
+                        <!-- 選大小 -->
+                        <span> Size：</span>
+                        <input onclick="selectTab(4)" type="radio" id="box4" name="boxsize">
+                        <label for="box4"><img src="../media/pic/customize/4.png"></label>
+
+                        <input onchange="selectTab(9)" type="radio" id="box9" name="boxsize">
+                        <label for="box9"><img src="../media/pic/customize/9.png"></label>
+                        <br>
+                        <br>
+                        <!-- 內容物 -->
+                        <span> Cookie：</span>
+
+                        <img class="cookies" src="../media/pic/customize/cake1.png" draggable="true" id="c1"
+                            onmousedown="fun1()">
+                        <img class="cookies" src="../media/pic/customize/c2.png" draggable="true">
+                        <img class="cookies" src="../media/pic/customize/c3.png" draggable="true">
+                        <img class="cookies" src="../media/pic/customize/c4.png" draggable="true">
+                        <img class="cookies" src="../media/pic/customize/c5.png" draggable="true">
+                        <img class="cookies" src="../media/pic/customize/c6.png" draggable="true">
+                        <img class="cookies" src="../media/pic/customize/c7.png" draggable="true">
+                        <img class="cookies" src="../media/pic/customize/c8.png" draggable="true">
+
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+        <br>
+        <br>
+        <!-- 前往步驟2的按鈕 -->
+        <div class="row">
+            <div class="col-lg-12 d-flex justify-content-center">
+                <a href="#step2"><button class="btn1">Next</button></a>
+            </div>
+        </div>
+        <br>
+        <br>
+
+        <!-- 步驟2的槓槓 -->
+        <div id="step2"></div>
+        <div class="homeblock2 "></div>
+
+        <div class="container-md homeblock">
+            <hr class="p-2">
+            <p class=" stepblock d-flex justify-content-center stepblock">Step2 挑選包裝</p>
+            <hr class="p-2">
+        </div>
+        <!-- 步驟2 -->
+        <div class="container stepdiv">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-lg-6">
+                    <img class="stepbar w-75" id="imgstep2" src="../media/pic/customize/box1.png">
+                </div>
+                <div class="col-lg-6 ">
+                    <form action="" class="">
+                        <br>
+                        <span> BoxColor：</span>
+                        <input type="radio" id="red" name="boxcolor" checked onchange="get_num2('1')">
+                        <label for="red"><img src="../media/pic/customize/Color1.png"></label>
+                        <input type="radio" id="orange" name="boxcolor" checked onchange="get_num2('2')">
+                        <label for="orange"><img src="../media/pic/customize/Color2.png"></label>
+                        <input type="radio" id="green" name="boxcolor" checked onchange="get_num2('3')">
+                        <label for="green"><img src="../media/pic/customize/Color3.png"></label>
+                        <input type="radio" id="blue" name="boxcolor" checked onchange="get_num2('4')">
+                        <label for="blue"><img src="../media/pic/customize/Color4.png"></label>
+                        <input type="radio" id="purple" name="boxcolor" checked onchange="get_num2('5')">
+                        <label for="purple"><img src="../media/pic/customize/Color5.png"></label>
+                        <br>
+                        <br>
+                        <span style="opacity: 0;"> BoxColor：</span>
+                        <input type="radio" id="blackred" name="boxcolor" checked onchange="get_num2('6')">
+                        <label for="blackred"><img src="../media/pic/customize/Color6.png"></label>
+                        <input type="radio" id="orangeblue" name="boxcolor" checked onchange="get_num2('7')">
+                        <label for="orangeblue"><img src="../media/pic/customize/Color7.png"></label>
+                        <input type="radio" id="greenyellow" name="boxcolor" checked onchange="get_num2('8')">
+                        <label for="greenyellow"><img src="../media/pic/customize/Color8.png"></label>
+                        <input type="radio" id="bluewhite" name="boxcolor" checked onchange="get_num2('9')">
+                        <label for="bluewhite"><img src="../media/pic/customize/Color9.png"></label>
+                        <input type="radio" id="purpleblack" name="boxcolor" checked onchange="get_num2('10')">
+                        <label for="purpleblack"><img src="../media/pic/customize/Color10.png"></label>
+
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <!-- 選紙袋顏色 -->
+        <div class="container stepdiv">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-lg-6">
+                    <img class="stepbar w-75" id="imgstep1" src="../media/pic/customize/bag1.png">
+                </div>
+                <div class="col-lg-6 ">
+                    <form action="" class="">
+                        <br>
+                        <span> BagColor：</span>
+                        <input type="radio" id="bagred" name="bagcolor" checked onchange="get_num1('1')">
+                        <label for="bagred"><img src="../media/pic/customize/Color1.png"></label>
+                        <input type="radio" id="bagorange" name="bagcolor" checked onchange="get_num1('2')">
+                        <label for="bagorange"><img src="../media/pic/customize/Color2.png"></label>
+                        <input type="radio" id="baggreen" name="bagcolor" checked onchange="get_num1('3')">
+                        <label for="baggreen"><img src="../media/pic/customize/Color3.png"></label>
+                        <input type="radio" id="bagblue" name="bagcolor" checked onchange="get_num1('4')">
+                        <label for="bagblue"><img src="../media/pic/customize/Color4.png"></label>
+                        <input type="radio" id="bagpurple" name="bagcolor" checked onchange="get_num1('5')">
+                        <label for="bagpurple"><img src="../media/pic/customize/Color5.png"></label>
+                        <br>
+                        <br>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-- 前往步驟3的按鈕 -->
+        <div class="row">
+            <div class="col-lg-12 d-flex justify-content-center">
+                <a href="#step3" class="btn1">Next
+                    <!-- <button class="btn1">Next</button> -->
+                </a>
+            </div>
+        </div>
+        <br>
+        <br>
+        <!-- 步驟3的槓槓 -->
+        <div id="step3"></div>
+        <div class="homeblock2 "></div>
+
+        <div class="container-md homeblock">
+            <hr class="p-2">
+            <p class=" d-flex justify-content-center stepblock">Step3 客製卡片</p>
+            <hr class="p-2">
+        </div>
+        <!-- 步驟3 -->
+        <div class="container stepdiv">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-lg-12">
+                    <blockquote contenteditable="true">
+                        <p>親愛的__＿＿＿＿:</p>
+                        <p>祝你情人節快樂！ 希望未來的日子裡都會有你的陪伴</p>
+                        <br><br><br>
+                        <p class="text-end"> 愛你的XX</p>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <!-- 前往步驟4的按鈕 -->
+        <div class="row">
+            <div class="col-lg-12 d-flex justify-content-center">
+                <a href="#step4" class="btn1">Next</a>
+            </div>
+        </div>
+        <!-- 步驟4的槓槓 -->
+
+        <div class="container-md homeblock">
+            <hr class="p-2">
+            <p class=" d-flex justify-content-center stepblock" id="step4">Step4 確認禮物</p>
+            <hr class="p-2">
+        </div>
+        <!-- 步驟4 -->
+        <div class="step4">
+            <div class="container stepdiv">
+                <div class="row d-flex justify-content-center align-items-center">
+
+                    <div class="col-lg-6">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <img class="stepbar w-100" src="../media/pic/customize/box1.png">
+                            </div>
+                            <div class="col-lg-6">
+                                <img class="stepbar w-100" src="../media/pic/customize/bag1.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 ">
+                        <form action="" class="">
+
+                            <!-- 選數量 -->
+                            <div class="count">
+                                <div>選項： 4格鐵盒/內容物:XXX/包裝:粉</div>
+                                <span>數量：</span>
+                                <button id="decreaseBtn" class="btn2 ">-</button>
+                                <span id="number">1</span>
+                                <button id="increaseBtn" class="btn2 ">+</button>
+
+                            </div>
+                            <br>
+
+                            <span>
+                                <button id="addtocart" class="btn1">加入購物車</button>
+                            </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footerPage"></div>
+        <script>
+            $(document).ready(function () {
+                $("#addtocart").on("click", function () {
+                    
+                    var button = $(this);
+                    var cart = $("#cart");
+                    var cartTotal = cart.attr("data-totalitems");
+                    var newCartTotal = parseInt(cartTotal) + 1;
+
+                    button.addClass("sendtocart");
+                    setTimeout(function () {
+                        button.removeClass("sendtocart");
+                        cart.addClass("shake").attr("data-totalitems", newCartTotal);
+                        setTimeout(function () {
+                            cart.removeClass("shake");
+                        }, 500);
+                    }, 1000);
+                });
+            });
+            $(".headerPage").load("./nav.html");
+            $(".footerPage").load("./footer.html");
+
+            // 更換紙袋顏色
+            function get_num1(num) {
+                document.getElementById('imgstep1').src = "../media/pic/customize/bag" + num + ".png";
+
+            }
+            // 更換盒子顏色
+            function get_num2(num) {
+                document.getElementById('imgstep2').src = "../media/pic/customize/box" + num + ".png";
+            }
+
+            // 步驟4的數量加減
+            $(document).ready(function () {
+                // 綁定 "-" 按鈕的點擊事件處理
+                $("#decreaseBtn").click(function (event) {
+                    event.preventDefault(); // 阻止預設行為
+                    var number = parseInt($("#number").text());
+                    number--;
+                    $("#number").text(number);
+                });
+
+                // 綁定 "+" 按鈕的點擊事件處理
+                $("#increaseBtn").click(function (event) {
+                    event.preventDefault(); // 阻止預設行為
+                    var number = parseInt($("#number").text());
+                    number++;
+                    $("#number").text(number);
+                });
+            });
+            // 隱藏盒子
+            function selectTab(boxIndex) {
+                //Hide All Tabs
+                document.getElementById("box_4").style.display = "none";
+                document.getElementById("box_9").style.display = "none";
+                //Show the Selected Tab
+                document.getElementById("box_" + boxIndex).style.display = "grid";
+            }
+            // 餅乾放置盒子的功能
+            // 滑鼠按下同時加上包裝以及變大
+            function fun1() {
+                var drag_img = document.getElementById('c1');
+                drag_img.src = '../media/pic/customize/cake5.png';
+                let box_display_style = document.getElementById("box_4").style.display;
+                if (box_display_style === "none") {
+                    drag_img.classList.add("drag_img_for_box9");
+                } else {
+                    drag_img.classList.add("drag_img_for_box4");
+                }
+            }
+            // source 儲存餅乾的元素
+            let source = null;
+            // 抓的時候變透明
+            const drag_img = document.getElementById('c1');
+            drag_img.addEventListener("dragstart", (e) => {
+                // 抓取位置座標 --> 移到中間
+
+                e.dataTransfer.setDragImage(drag_img, 120, 130);
+                e.target.classList.add("dragging");
+                source = e.target;
+            });
+            // 拖動完變不透明
+            drag_img.addEventListener("dragend", (e) => {
+                e.target.classList.remove("dragging");
+                source = null;
+            });
+
+            // 餅乾放置目標位置（盒子）盒子的效果
+            const containers = document.querySelectorAll(".box");
+            containers.forEach((container) => {
+                container.addEventListener("dragover", (e) => {
+                    e.preventDefault();
+                });
+                container.addEventListener("drop", (e) => {
+                    e.target.appendChild(source);
+                    e.target.classList.remove("dragging");
+                });
+                container.addEventListener("dragenter", (e) => {
+                    e.target.classList.add("hover");
+                });
+                container.addEventListener("dragleave", (e) => {
+                    e.target.classList.remove("hover");
+                });
+            });
+
+
+        </script>
+        
+    </div>
+    </a><a class="page-top" href="#">TOP</a>
+</body>
+
+</html>

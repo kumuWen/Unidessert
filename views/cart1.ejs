@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charCustomize="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidessert有你甜點|購物車</title>
+    <link href="https://api.fontshare.com/v2/css?f[]=gambetta@400,1,300,600,701,2,501,401,301,601,500,700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Satisfy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <script src="/js/jquery-3.7.0.min.js"></script>
+    <link rel="stylesheet" href="/css/order1.css" type="text/css">
+</head>
+
+<body>
+    <%- include("./nav.ejs") %>
+    <div class="headerPage"></div>
+    <picture>
+        <source media="(max-width: 768px)" srcCustomize="/pic/cart/order1.png">
+        <img class="statement" src="/pic/cart/order1(2x).png">
+    </picture>
+    <% if ( typeof noOrder !== "undefined" && noOrder) { %>
+        <div class="mycontainer container">
+            <div class="table">
+                <div class="ps-4 bigform pe-4">
+                    <div class="table-header row ">
+                        <div class="table-cell col-2 px-2">商品明细</div>
+                        <div class="table-cell col-2">客製化規格</div>
+                        <div class="table-cell col-4">客製化卡片</div>
+                        <div class="table-cell col-3"></div>
+                        <div class="table-cell col-1"></div>
+                    </div>
+                    <p class="noOder">尚無加入商品</p>
+                </div>
+            </div>
+        </div>
+    <% } else { %>   
+    <div class="mycontainer container">
+        <div class="table">
+            <div class="ps-4 bigform pe-4">
+                <div class="table-header row px-4">
+                    <div class="table-cell col-3 ">&nbsp;&nbsp;商品明细</div>
+                    <div class="table-cell col-3">客製化規格</div>
+                    <div class="table-cell col-3">客製化卡片</div>
+                    <!-- <div class="table-cell col-1"></div> -->
+                    <div class="table-cell col-3"></div>
+                </div>
+    
+                <!-- 循環顯示 c_detail2 表的資料 -->
+                <% for (var i = 0; i < cartdata.length; i++) { %>
+                    <div style="justify-items: center" class="table-row table-row1 order row my-2">
+                        <div class="table-cell col-2 px-2">
+                            <div class="product-info">
+                                <img id="cart_img" src="<%= cartdata[i].p_pic || cartdata[i].cpic %>" width="180px" alt="Product 1">
+                                <p id="cart_text" class="mt-2 product-name"><%= cartdata[i].pd_name %></p>
+                            </div>
+                        </div>
+                        <div class="table-cell item col-3">
+                            <% if (cartdata[i].product_type === 'Customize') { %>
+                                <li class="mb-3">規格:<%= cartdata[i].size %></li>
+                                <li class="mb-3">內容物:<%= cartdata[i].cookie1 %>, <br>
+                                    <%= cartdata[i].cookie2 %>,<br>
+                                    <%= cartdata[i].cookie3 %>, <br><%= cartdata[i].cookie4 %>
+                                </li>
+                                <li class="mb-3">禮物盒:<%= cartdata[i].boxcolor %></li>
+                                <li>紙袋:<%= cartdata[i].bagcolor %></li>
+                            <% } %>
+                        </div>
+                        <div class="table-cell item col-2 p-0">
+                            <% if (cartdata[i].product_type === 'Customize') { %>
+                                <div><%= cartdata[i].cardcontent %></div>
+                            <% } %>
+                        </div>
+
+                        <div class="table-cell item col-4 row d-flex justify-content-center">
+                            <div class="table-cell item col-6  text-right">數量</div>
+                            <div class="table-cell item col-6 amount d-flex justify-content-end">
+                                <button id="subtract_btn<%= i %>" class="subtractBtn">-</button>
+                                <span class="quantity"><%= cartdata[i].quantity %></span>
+                                <button id="add_btn<%= i %>" class="addBtn p-0">+</button>
+                            </div>
+                            <div class="row">
+                                <div class="table-cell item col-6 text-right">價格</div>
+                                <div class="table-cell item col-6 price text-right">$<%= cartdata[i].p_price || 600 %></div>
+                            </div>
+                            <div class="row">
+                                <div class="table-cell item col-6 text-right">小計</div>
+                                <div class="table-cell item col-6 price-total text-right"><%= cartdata[i].quantity * cartdata[i].p_price %></div>
+                            </div>
+                        </div>
+                        <div class="table-cell item col-1">
+                            <span class="delete-btn"><img id="delete_btn<%= i %>" class="deleteBtn" style="width: 40%;display: block; margin-left: auto;" src="/pic/cart/Waste.png" alt=""></span>
+                        </div>
+                    </div>
+                <% } %>
+                
+            </div>
+        </div>
+    </div>
+                <div class="table-footer ps-4 pe-4 mx-5">
+                    <div class="table-row table-row1 row ">
+                        <div class="table-cell col-7"></div>
+                        <div class="table-cell item col-2" style="padding-left: 100px; padding-right: 0%;">總計：</div>
+                        <div class="table-cell item col-3 text-left product-amount">2件</div>
+                    </div>
+                    <div class="table-row table-row1 row">
+                        <div class="table-cell col-7"></div>
+                        <div class="table-cell item col-2" style="padding-left: 100px; padding-right: 0%;">商品金額：</div>
+                        <div class="table-cell item col-3 text-left product-total">$<%= order_total %></div>
+                    </div>
+                    <div class="table-row table-row1 row">
+                        <div class="table-cell col-7"></div>
+                        <div class="table-cell item col-2" style="padding-left: 100px; padding-right: 0%;">運費：</div>
+                        <div class="table-cell item col-3 text-left deliver-fee">$<%=deliever_fee%></div>
+                    </div>
+                    <div class="table-row table-row1 row">
+                        <div class="table-cell col-7"></div>
+                        <div class="table-cell item col-2" style="padding-left: 100px; padding-right: 0%;">訂單總額：</div>
+                        <div class="table-cell item col-3 text-left cash-total">$<%=order_all%></div>
+                    </div>
+                    <div class="table-row row pay">
+                        <div class="table-cell col-7"></div>
+                        <div class="table-cell item col-2"></div>
+                        <div class="table-cell item col-3">
+                            <a href="./cart/fillout"><input class="checkout" type="button" value="結帳"></input></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% } %>   
+
+    <script>
+        // 刪除商品函數
+        // function deleteOrder(orderdetails_id, rowToDelete) {
+        //     var JSONData = { "orderdetails_id": orderdetails_id };
+        //     JSONData = JSON.stringify(JSONData);
+        //     $.ajax({
+        //         url: "/cart/" + orderdetails_id,
+        //         type: "DELETE",
+        //         contentType: "application/json; charset=utf-8",
+        //         data: JSONData,
+        //         success: function (res) {
+        //             console.log(`deleteOrder success`);
+        //             rowToDelete.remove(); // 刪除整列
+        //         },
+        //         error: function () {
+        //             alert("系統錯誤!");
+        //         }
+        //     });
+        // }
+
+        // // 點擊事件處理函數
+        // $('.deleteBtn').on('click', function(e) {
+        //     // 取得要刪除的商品索引
+        //     var delete_click_target = parseInt(e.target.id.substr(10));
+        //     console.log(delete_click_target);
+        //     // 找到要刪除的整列
+        //     var rowToDelete = document.getElementById(e.target.id).closest('.table-row');
+            
+        //     // 先執行第一個 AJAX 請求，取得要刪除的商品 ID
+        //     $.ajax({
+        //         url: '/cart/id',
+        //         type: 'POST', 
+        //         data: { delete_click_target: delete_click_target },
+        //         dataType: 'json',
+        //         cache: true,
+        //         success: function (data) {
+        //             console.log(data.orderdetails_id);
+        //             // 在成功回調函數中執行第二個 AJAX 請求並刪除整列
+        //             deleteOrder(data.orderdetails_id, rowToDelete);
+        //         },
+        //         error: function (error) {
+        //             console.error('Error:', error);
+        //         },
+        //     });
+        // });
+
+// 點擊事件處理函數
+$('.deleteBtn').on('click', function(e) {
+    // 取得要刪除的商品索引
+    var delete_click_target = parseInt(e.target.id.substr(10));
+    console.log(delete_click_target);
+    // 找到要刪除的整列
+    var rowToDelete = document.getElementById(e.target.id).closest('.table-row');
+    
+    // 先執行第一個 AJAX 請求，取得要刪除的商品 ID
+    $.ajax({
+        url: '/cart/id',
+        type: 'POST', 
+        data: { delete_click_target: delete_click_target },
+        dataType: 'json',
+        cache: true,
+        success: function (data) {
+            console.log(data.orderdetails_id);
+            // 在成功回調函數中直接執行刪除請求
+            var JSONData = { "orderdetails_id": data.orderdetails_id };
+            JSONData = JSON.stringify(JSONData);
+            $.ajax({
+                url: "/cart/" + data.orderdetails_id,
+                type: "DELETE",
+                contentType: "application/json; charset=utf-8",
+                data: JSONData,
+                success: function (res) {
+                    console.log(`deleteOrder success`);
+                    rowToDelete.remove(); // 刪除整列
+                },
+                error: function () {
+                    alert("系統錯誤!");
+                }
+            });
+        },
+        error: function (error) {
+            console.error('Error:', error);
+        },
+    });
+});
+
+
+        // 刪除訂單項目並更新購物車
+        function deleteOrder(element) {
+            var row = element.closest('.table-row');
+            row.remove();
+            updateCart();
+        }
+
+        // 更新購物車
+        function updateCart() {
+            var rows = document.querySelectorAll('.table-row1.order');
+            var productAmount = 0;
+            var productTotal = 0;
+
+            rows.forEach(function (row, index) {
+                var quantityElement = row.querySelector('.quantity');
+                var priceElement = row.querySelector('.price');
+                var priceTotalElement = row.querySelector('.price-total');
+
+                var quantity = parseInt(quantityElement.textContent);
+                var price = parseInt(priceElement.textContent.replace('$', ''));
+
+                var priceTotal = quantity * price;
+                priceTotalElement.textContent = '$' + priceTotal;
+
+                productAmount += quantity;
+                productTotal += priceTotal;
+            });
+
+            var productAmountElement = document.querySelector('.product-amount');
+            var productTotalElement = document.querySelector('.product-total');
+            var deliverFeeElement = document.querySelector('.deliver-fee');
+            var cashTotalElement = document.querySelector('.cash-total');
+
+            productAmountElement.textContent = productAmount + '件';
+            productTotalElement.textContent = '$' + productTotal;
+
+            var deliverFee = 150;
+            var cashTotal = productTotal + deliverFee;
+
+            deliverFeeElement.textContent = '$' + deliverFee;
+            cashTotalElement.textContent = '$' + cashTotal;
+        }
+
+        // 減少商品數量
+        function subtractQuantity(element) {
+            var quantityElement = element.nextElementSibling;
+            var quantity = parseInt(quantityElement.textContent);
+
+            if (quantity > 1) {
+                quantity--;
+                quantityElement.textContent = quantity;
+                updateCart();
+            }
+        }
+
+        // 增加商品數量
+        function addQuantity(element) {
+            var quantityElement = element.previousElementSibling;
+            var quantity = parseInt(quantityElement.textContent);
+
+            quantity++;
+            quantityElement.textContent = quantity;
+            updateCart();
+        }
+
+        // 監聽刪除按鈕的點擊事件
+        var deleteButtons = document.querySelectorAll('.delete-btn');
+        deleteButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                deleteOrder(this);
+            });
+        });
+        
+        // 監聽增加按鈕的點擊事件
+        var add_click_target
+        var addButtons = document.querySelectorAll('.addBtn');
+        addButtons.forEach(function (button) {
+            button.addEventListener('click', function (e) {
+                addQuantity(this);
+                add_click_target = e.target.id.substr(7);
+            });
+        });
+
+        // 監聽減少按鈕的點擊事件
+        var subtract_click_target
+        var subtractButtons = document.querySelectorAll('.subtractBtn');
+        subtractButtons.forEach(function (button) {
+            button.addEventListener('click', function (e) {
+                subtractQuantity(this);
+                // 取得迴圈的第幾個商品
+                subtract_click_target = e.target.id.substr(12);
+            });
+        });
+        
+        // 頁面載入時更新購物車
+        window.addEventListener('load', function () {
+            updateCart();
+        });
+
+        $('.addBtn').on('click', function (e) {
+            // PUT 方法更新商品數量
+            $.ajax({
+                url: '/cart/increase',
+                type: 'PUT', // 使用PUT方法
+                data: { add_click_target: add_click_target },
+                dataType: 'json',
+                cache: false,
+                success: function (data) {
+                    console.log('Quantity increased successfully:', data);
+                },
+                error: function (error) {
+                    console.error('Error increasing quantity:', error);
+                },
+            });
+        });
+        // 減少按鈕 ajax
+        $('.subtractBtn').on('click', function (e) {
+            $.ajax({
+                url: '/cart/decrease',
+                type: 'PUT',
+                data: { subtract_click_target: subtract_click_target },
+                dataType: 'json',
+                cache: false,
+                success: function (data) {
+                    console.log('Quantity increased successfully:', data);
+                },
+                error: function (error) {
+                    console.error('Error decreasing quantity:', error);
+                },
+            });
+        });
+
+        $
+    </script>
+      <%- include("./footer.ejs") %>
+</body>
+
+</html>

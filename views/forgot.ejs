@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>忘記密碼</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <script src="/js/bootstrap.bundle.js"></script>
+    <script src="/js/jquery-3.7.0.min.js"></script>
+    <script src="/js/jquery-ui.js"></script>
+    <style>
+        body {
+            /* background-color: #FFF4E0 FFBF9B B46060 4D4D4D; */
+            background-color: #EADFD9;
+        }
+
+        .login_container {
+            width: 25%;
+            position: absolute;
+            top: 20%;
+            left: 40%;
+            display: flex;
+            flex-direction: column;
+            padding: 5% 2% 5% 2%;
+            border-radius: 5px;
+            background-color: #B44A60;
+        }
+
+        .input {
+            background-color: #fff;
+            border: none;
+            padding: 10px;
+            margin: 0.5rem 0;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .login_container p {
+            text-align: center;
+            font-size: 2rem;
+            color: #FFF4E0;
+        }
+
+        .login_btn {
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 10px;
+            margin: 0.5rem 0;
+            color: #EADFD9;
+            background-color: #702F43;
+            border: none;
+        }
+
+        #verificationbtn {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <% if (typeof error !=='undefined' && error) { %>
+        <script>
+            $(document).ready(function () {
+                $('#alertModalLabel').text('<%= title %>');
+                $('#alertModalBody').text('<%= message %>');
+                $('#alertModal').modal('show');
+            });
+        </script>
+        <% } %>
+            <% var showAlert; %>
+                <% if (showAlert) { %>
+                    <script>
+                        $(document).ready(function () {
+                            $('#alertModalLabel').text('<%= title %>');
+                            $('#alertModalBody').text('<%= message %>');
+                            $('#alertModal').modal('show');
+                            if ('<%= title %>' === '驗證成功') {
+                                $('#alertModalBody').text('<%= message %>  即將在一秒內自動跳轉更改密碼頁面');
+                                setTimeout(function () {
+                                    window.location.href = '/user/change'
+                                }, 1000)
+                            }
+                        });
+                    </script>
+                    <% } %>
+
+                        <!-- modal -->
+                        <div class="modal fade" id="alertModal" tabindex="-1" role="dialog"
+                            aria-labelledby="alertModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="alertModalLabel">
+                                            標題
+                                        </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body" id="alertModalBody">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary" id="confirmbtn"
+                                            data-bs-dismiss="modal">確認</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="container">
+                            <form id="login_form" class="login_container" method="post" action="/user/forgot">
+                                <p>忘記密碼</p>
+                                <input id="regEmail" class="input" type="text" placeholder="請輸入email" name="email" required>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <input type="text" placeholder="請輸入驗證碼" name="verificationCode"
+                                            class="input verificationCode " minlength="6"
+                                            oninput="setCustomValidity('');" oninvalid="setCustomValidity('請輸入驗證碼');"
+                                            required />
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="button" class="login_btn " value="發送驗證碼" id="verificationbtn"
+                                            onclick="sendVCode();">
+                                        </input>
+                                    </div>
+                                </div>
+                                <input class="login_btn" type="submit" value="驗證">
+                            </form>
+                        </div>
+
+
+
+</body>
+
+<!-- <script>
+    $(document).ready(function () {
+        $('#login_form').on('submit', function (e) {
+            e.preventDefault();
+            let username = document.getElementById('username_id').value
+            console.log(username)
+            let password = document.getElementById('password_id').value
+            console.log(password)
+            let data = {
+                "username": username,
+                "password": password
+            }
+            $.post({
+                url: "http://localhost:5432",
+                method: "post",
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                success: function (res) {
+                    if (res.status === 0) {
+                        console.log(res.msg)
+                        window.location.href = '/backOrder'
+                    } else {
+                        console.log(res.msg)
+                        alert('密碼錯誤')
+                    }
+                },
+                error: function (err) {
+                    console.log(err.msg);
+
+                }
+            })
+        })
+    })
+</script> -->
+
+<script>
+    function sendVCode() {
+        const emailInput = document.getElementById("regEmail");
+        const email = emailInput.value.trim();
+
+        if (email === "") {
+            // 未輸入電子信箱，顯示錯誤提示
+            emailInput.setCustomValidity("請輸入電子信箱");
+            emailInput.reportValidity();
+            return;
+        }
+
+        countdown(); // 倒數計時
+        sendEmail(); // 發送驗證郵件
+    }
+
+
+    function countdown() {
+        var time = 60;  //定義60秒的倒數
+        var mytime = setInterval(function () {
+            sub();
+        }, 1000)
+
+        function sub() {
+            time--;
+            $('#verificationbtn').attr("value", "請" + time + "秒後再試");
+            if (time === 0) {
+                clearInterval(mytime);
+                $('#verificationbtn').attr("value", "驗證碼");
+                $('#verificationbtn').attr("disabled", false); //按鈕可以用
+            } else {
+                $('#verificationbtn').attr("disabled", true); //按鈕不可以用
+            }
+        }
+    }
+
+    // 發送驗證email
+    function sendEmail() {
+        const email = document.getElementById("regEmail").value;
+        console.log(email)
+        fetch(`/user/verify?email=${email}`, {
+            method: "Get",
+            // headers: {
+            //   "Content-Type": "application/json"
+            // },
+            // body: JSON.stringify({ email: email })
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.message);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
+</script>
+
+
+</html>

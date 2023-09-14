@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidessert有你甜點|訂單完成</title>
+    <link href="https://api.fontshare.com/v2/css?f[]=gambetta@400,1,300,600,701,2,501,401,301,601,500,700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Satisfy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <script src="/js/jquery-3.7.0.min.js"></script>
+    <link rel="stylesheet" href="/css/order3.css">
+    <script src="https://kit.fontawesome.com/6f2756765f.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+
+<body>
+    <%- include("./nav.ejs") %>
+  
+    <picture>
+        <source media="(max-width: 768px)" srcset="/pic/cart/order3.png">
+        <img class="statement" src="/pic/cart/order3(2x).png">
+    </picture>
+    <div class="mycontainer container">
+        <div class="topic finish">
+            已經收到您的訂單
+            <img class="finish check" style="width: 50px;" src="/pic/cart/check.png" alt="">
+        </div>
+        <div class="topic mb-1">訂單編號:<%= oid%></div>
+        <div class="table">
+            <div class="py-2 ps-4 bigform pe-4 mb-5">
+                <div class="table-header row px-4">
+                    <div class="table-cell col-3 ">&nbsp;&nbsp;商品明细</div>
+                    <div class="table-cell col-4">客製化規格</div>
+                    <!-- <div class="table-cell col-1"></div> -->
+                    <div class="table-cell col-2">客製化卡片</div>
+                    <div class="table-cell col-3"></div>
+                </div>
+                <% for (let i = 0; i < check_cart.length; i++) { %>
+                    <% if (check_cart[i].size !== null || check_cart[i].cookie1 !== null || check_cart[i].cookie2 !== null || check_cart[i].cookie3 !== null || check_cart[i].cookie4 !== null || check_cart[i].boxcolor !== null || check_cart[i].bagcolor !== null || check_cart[i].cardcontent !== null || check_cart[i].quantity !== null || check_cart[i].cprice !== null || !isNaN(cprice_total) || check_cart[i].pd_name !== null || check_cart[i].pd_content !== null || check_cart[i].p_price !== null || check_cart[i].price_total !== null) { %>
+                        <div class="table-row table-row1 order row">
+                            <% if (check_cart[i].size !== null) { %>
+                            <div class="table-cell col-3">
+                                <div class="product-info p-10">
+                                    <img id="cart_img" class="m-10" src="<%= check_cart[i].cpic%>" width="160px" alt="Product 1">
+                                    <p id="cart_text" class="m-10 product-name p-10">客製化禮盒</p>
+                                </div>
+                            </div>
+                            <% }%>
+                            <% if (check_cart[i].size !== null && check_cart[i].cookie1 !== null && check_cart[i].cookie2 !== null && check_cart[i].cookie3 !== null && check_cart[i].cookie4 !== null && check_cart[i].boxcolor !== null && check_cart[i].bagcolor !== null) { %>
+                            <div class="table-cell item col-4 p-3">
+                                <li class="mb-3">規格: <%= check_cart[i].size%></li>
+                                <li class="mb-3">內容物: <%= check_cart[i].cookie1%>,
+                                    <%= check_cart[i].cookie2%>,<br>
+                                    <%= check_cart[i].cookie3%>,
+                                    <%= check_cart[i].cookie4%>
+                                </li>
+                                <li class="mb-3">禮物盒: <%= check_cart[i].boxcolor%></li>
+                                <li>紙袋: <%= check_cart[i].bagcolor%></li>
+                            </div>
+                            <% } %>
+                            <% if (check_cart[i].cardcontent !== null) { %>
+                            <div class="table-cell item col-2 p-0">
+                                <div><%= check_cart[i].cardcontent%></div>
+                            </div>
+                            <% } %>
+                            <% let cprice_total = check_cart[i].quantity2 * check_cart[i].cprice; %>
+                            <% if (check_cart[i].quantity2 && check_cart[i].quantity) { %>
+                            <div class="table-cell item col-3 row">
+                                    <div class="row">
+                                        <div class="table-cell item col-2 "></div>
+                                        <div class="table-cell item col-5 p-0">&nbsp;&nbsp;數量:</div>
+                                        <div class="table-cell item col-5 amount m-0 p-0"> &nbsp;&nbsp;<%= check_cart[i].quantity2%>件</div>
+                                    </div>
+                                <% } %>
+                                <% if (check_cart[i].cprice !== null ) { %>
+                                    <div class="row">
+                                        <div class="table-cell item col-2 "></div>
+                                        <div class="table-cell item col-5 p-0">&nbsp;&nbsp;價格:</div>
+                                        <div class="table-cell item col-5 price m-0 p-0"> &nbsp;&nbsp;$<%= check_cart[i].cprice%></div>
+                                    </div>
+                                <% } %>
+                                <% if(!isNaN( cprice_total) && cprice_total != null && cprice_total !== 0) {%>
+                                    <div class="row">
+                                        <div class="table-cell item col-2 "></div>
+                                        <div class="table-cell item col-5 p-0">&nbsp;&nbsp;小計:</div>
+                                        <div class="table-cell item col-5 price-total m-0 p-0">&nbsp;&nbsp;$<%= cprice_total%></div>
+                                    </div>
+                                </div>
+                                <% } %>
+                            <% cp_total += cprice_total; %>
+                        </div>
+                        <div class="table-row table-row1 order row">
+                            <% if (check_cart[i].pd_name !== null) { %>
+                                <div class="table-cell col-3 px-2">
+                                    <div class="product-info p-10">
+                                        <img id="cart_img" class="m-10" src="<%= check_cart[i].p_pic%>" width="160px" alt="Product 1">
+                                        <p id="cart_text" class="m-10 mt-2 product-name p-10"><%= check_cart[i].pd_name%></p>
+                                    </div>
+                                </div>
+                            <% }%>
+                            <% if (check_cart[i].pd_content !== null) { %>
+                                <div class="table-cell item col-4 ">
+                                    <li class="p-3"><%= check_cart[i].pd_content%></li>
+                                </div>
+                            <% }%>
+                            <% if (check_cart[i].pd_content !== null) { %>
+                                <div class="table-cell item col-2 p-0">
+                                </div>
+                            <% }%>
+                            <% let price_total = check_cart[i].quantity * check_cart[i].p_price; %>
+                            <% if (check_cart[i].quantity !== null && check_cart[i].quantity !== 0 && (!check_cart[i].quantity2)) { %>
+                            <div class="table-cell item col-3 row">
+                                    <div class="row">
+                                        <div class="table-cell item col-2 "></div>
+                                        <div class="table-cell item col-5 p-0">&nbsp;&nbsp;數量:</div>
+                                        <div class="table-cell item col-5 amount m-0 p-0"> &nbsp;&nbsp;<%= check_cart[i].quantity%>件</div>
+                                    </div>
+                                <% }%>
+                                <% if (check_cart[i].p_price !== null) { %>
+                                    <div class="row">
+                                        <div class="table-cell item col-2 "></div>
+                                        <div class="table-cell item col-5 p-0">&nbsp;&nbsp;價格:</div>
+                                        <div class="table-cell item col-5 price m-0 p-0"> &nbsp;&nbsp;$<%= check_cart[i].p_price%></div>
+                                    </div>
+                                <% }%>
+                                <% if(!isNaN(price_total) && price_total != null && price_total !== 0) { %>
+                                    <div class="row">
+                                        <div class="table-cell item col-2 "></div>
+                                        <div class="table-cell item col-5 p-0">&nbsp;&nbsp;小計:</div>
+                                        <div class="table-cell item col-5 price-total m-0 p-0"> &nbsp;&nbsp;$<%=price_total%></div>
+                                    </div>
+                                </div>
+                                <% }%>
+                            <% cp_total += price_total; %>
+                        </div>
+                    <% }%>    
+                <% }%>
+                <% let order_total = cp_total + deliever_fee%>
+                <div class="table-footer">
+                    <div class="table-row table-row1 row" style="border: none;">
+                        <div class="table-cell col-6"></div>
+                        <div class="table-cell col-3"></div>
+                        <div class="table-cell item col-3 row">
+                        </div>
+                    </div>
+                    <div class="table-row table-row1 row">
+                        <div class="table-cell col-6"></div>
+                        <div class="table-cell col-3"></div>
+                        <div class="table-cell item col-3 row">
+                            <div class="col-7">商品總計:</div>
+                            <div class="col-5"><%= quantity_total%>件</div>
+                        </div>
+                    </div>
+                    <div class="table-row table-row1 row">
+                        <div class="table-cell col-6">收件人: <%= recipient%></div>
+                        <div class="table-cell col-3"></div>
+                        <div class="table-cell item col-3 row">
+                            <div class="col-7">商品金額:</div>
+                            <div class="col-5">$<%= cp_total%></div>
+                        </div>
+                        <!-- <div class="table-cell item col-1 product-amount ">2件</div> -->
+                    </div>
+                    <div class="table-row table-row1 row">
+                        <div class="table-cell col-6">收件人手機: <%= recipient_phone%></div>
+                        <div class="table-cell col-3"></div>
+                        <div class="table-cell item col-3 row">
+                            <div class="col-7">運費金額:</div>
+                            <div class="col-5">$<%= deliever_fee%></div>
+                        </div>
+                        <!-- <div class="table-cell item col-1 product-amount ">2件</div> -->
+                    </div>
+                    <div class="table-row table-row1 row" style="border: none;">
+                        <div class="table-cell col-6">收件人地址: <%= recipient_address%></div>
+                        <div class="table-cell col-3"></div>
+                        <div class="table-cell item col-3 row">
+                            <div class="col-7">訂單總計:</div>
+                            <div class="col-5">$<%= order_total%></div>
+                        </div>
+                        <!-- <div class="table-cell item col-1 product-amount ">2件</div> -->
+                    </div>
+                    <div class="table-row table-row1 row" style="border: none;">
+                        <div class="table-cell col-6"></div>
+                        <div class="table-cell col-3"></div>
+                        <div class="table-cell item col-3 row">
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>  
+    </div>    
+      
+
+       
+          <%- include("./footer.ejs") %>
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>訂單問題</title>
+   <link rel="stylesheet" href="/css/bootstrap.css">
+   <link rel="stylesheet" href="/css/nav_footer.css">
+   <link rel="stylesheet" href="/css/qaindex.css">
+   <script src="/js/bootstrap.bundle.js"></script>
+   <script src="/js/jquery-3.7.0.min.js"></script>
+   <script src="/js/jquery-ui.js"></script>
+   <script src="/js/script.js"> </script>
+
+</head>
+<script>
+  $(function(){
+  $(".qa-content").hide();
+  $(".qa-title").click(function() {
+
+  $(".qa-content").slideUp();
+
+  $(".qa-title.on").removeClass("on");
+
+  $(this).next().stop().slideDown();
+
+  $(this).stop().addClass("on");
+
+});
+});
+</script>
+
+</head>
+<body style="background-color: #eadfd9;">
+      <!-- nav -->
+      <%- include("./nav.ejs") %>
+   
+   <!-- 其他問題QA-->
+   <p class=" d-flex justify-content-center " id="toptitle" > Q&A - 常見問題 </p><br>
+
+   <div id="leftbtn" align="center" >
+      <a href="orderqa"><button class="topbtn">訂單問題</button></a>
+      <a href="shippingqa"><button class="topbtn">配送問題</button></a>
+      <a href="payqa"><button class="topbtn">付款方式</button></a>
+      <a href="qaindex"><button class="topbtn" style="background-color: #F0c7cd;">其他常見問題</button></a>
+
+
+   </div>
+ <!-- 其他常見問題QA-->
+ 
+ <ul id="qalist">
+
+     <li>
+         <div class="qa-title  ">1.每個商品有獨立包裝嗎？可以幫我分裝嗎？</div>
+         <div class="qa-content "> 依您訂購的品項單位，會有各自獨立包裝。如您訂的是單顆則有單顆包裝，如您訂的是盒裝則盒裝出貨給您。
+          基於安全衛生，並維持店家原本的商品出貨狀態，無法幫您多做加工和分裝。
+         </div>
+
+     </li>
+
+     <li>
+
+         <div class="qa-title ">2.請問可以冷藏或冷凍嗎？可存放多久？退冰後如何食用？</div>
+
+         <div class="qa-content ">每個品項不太一樣，每個商品頁面下方有詳細保存與食用說明，隨箱附上的出貨單上也有標示。
+
+         </div>
+
+     </li>
+     <li>
+         <div class="qa-title ">3.收到的商品有缺少或損壞怎麼辦？</div>
+         <div class="qa-content ">
+          若收到商品嚴重破損或缺品，請於收到 2 小時內拍照，提供到 FB 粉絲團、或 LINE、或來信客服信箱：unidessert@gmail.com 和我們反應，以利評估後續處理方式。
+         </div>
+
+
+     </li>
+     <li>
+         <div class="qa-title ">4.買太多吃不完可以退貨嗎？和想像的大小不同可以退貨嗎？</div>
+         <div class="qa-content ">很抱歉，生鮮食品類商品售出後不享有鑑賞期及退換貨服務。（自 105 年 1 月 1 日起，生鮮食品類不適用於消費者保護法第 19 條，不享有 7 天鑑賞期。）
+          商品頁面下方都有清楚標示內容量，請謹慎評估後購買。
+         </div>
+
+     </li>
+     <li>
+         <div class="qa-title ">5.非會員如何購買？</div>
+         <div class="qa-content  ">
+          非會員目前暫無法購物，加入會員後不僅能享受優惠價格，同時亦有各種優惠回饋，更能隨時追蹤訂單出貨狀態，歡迎掌握良機儘速【加入會員】。
+         </div>
+
+     </li>
+     <li>
+      <div class="qa-title ">6.如何加入會員？</div>
+      <div class="qa-content  ">
+        於本站首頁或是於頁面上點選【加入會員】，同意會員約定條款，成功註冊後，隨即享有會員相關權利及優質服務，同時擁有【個人帳戶】管理您的訂單資料與查詢任何交易記錄。有您甜點向您保證，透過有您甜點嚴密安全的資料庫管理，您的個人資料絕對不會外流，
+        購物時也能感受到法國的有您甜點的用心
+      </div>
+
+  </li>
+  <li>
+    <div class="qa-title ">7.收不到密碼通知函？</div>
+    <div class="qa-content  ">
+      因外部網路壅塞狀況、Email信箱容量及 Email 伺服器是否正常運作等不確定因素，都會影響到正常 Email 的收發，若當日未收到密碼通知函請先查看是否有防火牆阻擋，或檢查信函是否被過濾至垃圾信箱中，若非以上因素，可來信【客服信箱】提供其他外部 Email 信箱（提醒您：請勿提供 PChome、Yahoo 等免費 Email 信箱，
+      因收信不穩定或可能預設阻擋有你甜點之信件）。
+    </div>
+
+</li>
+<li>
+  <div class="qa-title ">8.忘記密碼同時也忘記加入時所填寫的E-mail信箱？</div>
+  <div class="qa-content  ">
+    若無法得知當初所填寫之 Email 信箱而無法成功收到密碼通知函，還煩請來信【客服信箱】提供加入會員時相關基本資料，我們將儘速為您處理。
+  </div>
+
+</li>
+<li>
+  <div class="qa-title ">9.我要如何更改個人資料？</div>
+  <div class="qa-content  ">
+    登入【會員中心】進行修改，我們於網站上提供方便線上個人資料修改服務，可選擇欲修改之資料即可。（提醒您：請於訂單成立前更改，以免系統抓取未更新的資料。）
+      </div>
+
+</li>
+ </ul>
+ <%- include("./footer.ejs") %>
+
+</body>
+
+</html>

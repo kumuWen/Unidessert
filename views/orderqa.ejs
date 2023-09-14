@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>訂單問題</title>
+   <link rel="stylesheet" href="/css/bootstrap.css">
+   <link rel="stylesheet" href="/css/nav_footer.css">
+   <link rel="stylesheet" href="/css/orderqa.css">
+   <script src="/js/bootstrap.bundle.js"></script>
+   <script src="/js/jquery-3.7.0.min.js"></script>
+   <script src="/js/jquery-ui.js"></script>
+   <script src="/js/script.js"> </script>
+
+</head>
+
+
+
+<body style="background-color: #eadfd9;">
+    <!-- nav -->
+    <%- include("./nav.ejs") %>
+
+   <!-- 其他問題QA-->
+   <p class=" d-flex justify-content-center  " id="toptitle" > Q&A - 常見問題 </p><br>
+
+   <div id="leftbtn" align="center">
+      <a href="./orderqa"><button class="topbtn" style="background-color: #F0c7cd;">訂單問題</button></a>
+      <a href="./shippingqa"><button class="topbtn">配送問題</button></a>
+      <a href="./payqa"><button class="topbtn">付款方式</button></a>
+      <a href="./qaindex"><button class="topbtn">其他常見問題</button></a>
+
+   </div>
+<div class="d-flex justify-content-center">
+   <figure class="figure">
+      <img id="qaimg" src="/pic/qa/orderfunction.png" class=" figure-img img-fluid rounded  d-block" alt="..." >
+      <figcaption class="figure-caption" style="font-size: 1.5rem;" > 
+   【訂購後及訂單相關問題】
+         <br>
+         1.訂單狀態查詢<br>
+         -訂單成立後將由系統email確認通知信
+         -訂單於付款1hr內將更新付款狀態
+         <br>
+         -訂單成立並付款成功=顯示備貨中
+         <br>
+         -出貨當天將於凌晨00:00前後email通知
+         <br>
+         -出貨確認+物流編號=顯示已發貨
+
+
+         <br>
+         2.更改訂購品項
+         <br>
+         訂單成立後不提供加購、變更品項及併單服務
+         <br>
+         如需作任何更改請聯絡客服取消訂單，再重新下單<br>
+
+         *訂購後7天／出貨區間前7天(星期六日及公眾假期除外)
+         <br>
+         因商品已進入排程，無法取消訂單請見諒
+
+
+         <br>
+         3.更改收件資訊
+         <br>
+         出貨時段前3天(星期六日及公眾假期除外)聯絡客服作修改
+
+
+         <br>
+         4.其他問題
+         <br>
+         *如有任何客戶服務查詢請以email聯繫*
+         <br>
+         服務時間:星期一至星期五 10:30 - 17:30 (公眾假期除外)
+         <br>
+         email: unidessert@gmail.com
+         <br>
+         IG帳號:@unidessert (恕不接受DM查詢)
+         <br>
+         FB專頁:un!dessert
+   
+      </figcaption>
+    </figure>
+ </div>   
+   </div>
+   <!-- footer -->
+   <%- include("./footer.ejs") %>
+
+
+</body>
+
+</html>

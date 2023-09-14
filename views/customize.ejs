@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidesssrt</title>
+    <link href="https://api.fontshare.com/v2/css?f[]=gambetta@400,1,300,600,701,2,501,401,301,601,500,700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Satisfy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <script src="/js/bootstrap.bundle.js"></script>
+    <script src="/js/jquery-3.7.0.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="/js/script.js"></script>
+    <style>
+        .step_img {
+            margin-bottom: 8%;
+            margin-top: 5%
+        }
+
+        .stepbar {
+            width: 30%;
+        }
+
+        #stepbar {
+            background-color: #EADFD9;
+        }
+
+        /* 整個stepbar */
+        .stepdiv {
+            color: #B44A60;
+            font-size: 2rem;
+        }
+
+        .homeblock {
+            color: #B44A60;
+        }
+
+        .homeblock2 {
+            margin-top: 100px;
+        }
+
+        .homeblock3 {
+            margin-top: 50px;
+        }
+
+        /* 整個body都同樣背景色 同樣字體*/
+        .allcontent {
+            background-color: #EADFD9;
+            font-family: 'gambetta', 'noto sans tc';
+        }
+
+        /* 設定選項的照片大小 */
+        .cookies {
+            width: 75px;
+        }
+
+
+        #cardinput {
+            width: 100%;
+            height: 80px;
+            font-size: 1rem;
+            background-color: #EADFD9;
+            border: solid 1px #B44A60;
+
+        }
+
+        .btn1 {
+            background-color: #F0C7CD;
+            color: #702F43;
+            font-size: 2rem;
+            width: 250px;
+            border: solid #702F43;
+            border-width: 5px;
+            border-radius: 9px;
+            text-align: center;
+            text-decoration: none;
+
+        }
+
+        .btn2 {
+            background-color: #702F43;
+            color: #EADFD9;
+            width: 100px;
+            border-radius: 5px;
+            font-size: 1.5rem;
+        }
+
+
+        .stepblock {
+            font-size: 2.5rem;
+
+        }
+
+        .count {
+            margin-bottom: 8%;
+        }
+
+        .step4 {
+            margin-bottom: 8%;
+        }
+
+        .seldessert4 {
+            background-color: #B09476;
+            opacity: 56%;
+            width: 300px;
+            height: 300px;
+            padding: 10px;
+            border: 15px solid #D4C4B3;
+            float: left;
+
+        }
+
+        .seldessert9 {
+            background-color: #B09476;
+            opacity: 56%;
+            width: 200px;
+            height: 200px;
+            padding: 10px;
+            border: 15px solid #D4C4B3;
+            float: left;
+
+        }
+
+        .box9 {
+            display: none;
+            grid-template-columns: 200px 200px 200px;
+        }
+
+        .box4 {
+            display: grid;
+            grid-template-columns: 300px 300px;
+        }
+
+        blockquote {
+            height: 400px;
+            background: #eee;
+            border-radius: 5px;
+            margin: 16px 0;
+        }
+
+        blockquote p {
+            padding: 15px;
+        }
+
+        input {
+            border: 0px;
+            outline: none;
+            background-color: #EADFD9;
+            color: #B44A60;
+        }
+
+        textarea {
+            height: 500px;
+            color: #B44A60;
+            border: 0px;
+
+        }
+
+        cite {
+            margin: 16px 32px;
+            font-weight: bold;
+        }
+
+        .dragging {
+            opacity: 0.4;
+        }
+
+        .hover {
+            background-color: #9e7140;
+        }
+
+        /* 拖動到4格的img會變比較大，9個的比較小 */
+        .drag_img_for_box4 {
+            width: 250px;
+        }
+
+        .drag_img_for_box9 {
+            width: 150px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <%- include("./nav.ejs") %>
+
+        <div class="allcontent">
+            <!-- header -->
+            <div class="headerPage" class="page-top-position"></div>
+            <!-- 步驟的bar1 -->
+            <div class="step_img">
+                <img class="w-100" src="/pic/customize/stepbar6.png">
+            </div>
+            <div class="row">
+                <div class="col-lg-12 d-flex justify-content-center">
+                    <a href="#step1"><button class="btn1">Start</button></a>
+                </div>
+            </div>
+            <br>
+            <!-- 設定間距跟跳到的地方 -->
+            <div id="step1"></div>
+            <div class="homeblock2 "></div>
+            <div class="container-md homeblock ">
+                <br class="p-2">
+                <p class=" d-flex justify-content-center  stepblock">Step1 挑選大小＆內容物</p>
+                <hr class="p-2">
+            </div>
+            <div class="container stepdiv">
+                <div class="row d-flex justify-content-center align-items-center" id="box_container">
+                    <div id="box_40" class="col-lg-6 box4">
+                        <div class="seldessert4" id="containers_leftTop"></div>
+                        <div class="seldessert4" id="containers_rightTop"></div>
+                        <div class="seldessert4" id="containers_leftBottom"></div>
+                        <div class="seldessert4" id="containers_rightBottom"></div>
+                    </div>
+
+                    <div id="box_41" class="col-lg-6 box9">
+                        <div class="seldessert9 box"></div>
+                        <div class="seldessert9 box"></div>
+                        <div class="seldessert9 box"></div>
+                        <div class="seldessert9 box"></div>
+                        <div class="seldessert9 box"></div>
+                        <div class="seldessert9 box"></div>
+                        <div class="seldessert9 box"></div>
+                        <div class="seldessert9 box"></div>
+                        <div class="seldessert9 box"></div>
+                    </div>
+                    <div class="col-lg-6 ">
+                        <form action="" class="">
+                            <!-- 選大小 -->
+                            <span> Size：</span>
+
+                            <input onclick="hide(this)" type="radio" id="<%= cat[39].cid %>" name="boxsize"
+                                value="<%= cat[39].cname %> " class="<%= cat[39].cprice2 %>">
+                            <label for="<%= cat[39].cid %>"><span>$<%= cat[39].cprice2 %></span><img
+                                    src="<%= cat[39].cpic %>"></label>
+
+
+                            <input onchange="hide(this)" type="radio" id="<%= cat[40].cid %>" name="boxsize"
+                                value="<%= cat[40].cname %>" class="<%= cat[40].cprice2 %>">
+                            <label for="<%= cat[40].cid %>"><span>$<%= cat[40].cprice2 %></span><img
+                                    src="<%= cat[40].cpic %>"></label>
+                            <br>
+                            <br>
+                            <!-- 內容物 -->
+                            <span> Cookies：</span>
+                            <br>
+                            <div id="c_cookieimg_container">
+                                <%for (let k=15; k < 39; k++) { %>
+                                    <img class="cookies <%= cat[k].cname %>" src="<%= cat[k].cpic2 %>" draggable="true"
+                                        type="<%= cat[k].cname %>" id="<%= cat[k].cid %>" onmousedown=""
+                                        value="<%= cat[k].cname %>">
+                                    <%}%>
+
+                            </div>
+                            <!-- <img class="cookies" src="pic/customize/cake1-2.jpg" draggable="true" id="15"
+                                onmousedown="fun1(this)"> -->
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+            <br>
+            <br>
+            <!-- 前往步驟2的按鈕 -->
+            <div class="row">
+                <div class="col-lg-12 d-flex justify-content-center">
+                    <a href="#step2"><button class="btn1">Next</button></a>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div id="step2"></div>
+            <div class="homeblock2 "></div>
+
+            <div class="container-md homeblock">
+                <hr class="p-2">
+                <p class=" stepblock d-flex justify-content-center stepblock">Step2 挑選包裝</p>
+                <hr class="p-2">
+            </div>
+            <div class="container stepdiv">
+                <div class="row d-flex justify-content-center align-items-center">
+                    <div class="col-lg-6">
+                        <img class="stepbar w-75" id="imgstep2" src="/pic/customize/box1.png">
+                    </div>
+                    <div class="col-lg-6 ">
+                        <br>
+                        <span> BoxColor：</span>
+                        <%for (let k=0; k <=9; k++) { %>
+                            <input type="radio" id=" <%= cat[k].cid %>" name="boxcolor" value="<%= cat[k].cname %>"
+                                checked onchange="get_num2(this)">
+                            <label for=" <%= cat[k].cid %>"><img src=" <%= cat[k].cpic2 %>"></label>
+                            <%}%>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <!-- 選紙袋顏色 -->
+                <div class="container stepdiv">
+                    <div class="row d-flex justify-content-center align-items-center">
+                        <div class="col-lg-6">
+                            <img class="stepbar w-75" id="imgstep1" src="/pic/customize/bag11.png">
+                        </div>
+                        <div class="col-lg-6 ">
+                            
+                            <br>
+                            <span> BagColor：</span>
+                            <%for (let k=10; k <=14; k++) { %>
+                                <input type="radio" id=" <%= cat[k].cid %>" name="bagcolor" value="<%= cat[k].cname %>"
+                                    checked onchange="get_num1(this)">
+                                <label for=" <%= cat[k].cid %>"><img src=" <%= cat[k].cpic2 %>"></label>
+                                <%}%>
+                                    <br>
+                                    <br>
+                        </div>
+                    </div>
+                </div>
+                <!-- 前往步驟3的按鈕 -->
+                <div class="row">
+                    <div class="col-lg-12 d-flex justify-content-center">
+                        <a href="#step3" class="btn1">Next
+                            <!-- <button class="btn1">Next</button> -->
+                        </a>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <!-- 步驟3的槓槓 -->
+                <div id="step3"></div>
+                <div class="homeblock2 "></div>
+
+                <div class="container-md homeblock">
+                    <hr class="p-2">
+                    <p class=" d-flex justify-content-center stepblock">Step3 客製卡片</p>
+                    <hr class="p-2">
+                </div>
+            </div>
+            <div class="container stepdiv">
+                <div class="row d-flex justify-content-center align-items-center">
+                    <div class="col-lg-12">
+                        <!-- <blockquote contenteditable="true">
+                            <p>親愛的＿＿＿＿:</p>
+                            <p>祝你情人節快樂！ 希望未來的日子裡都會有你的陪伴</p>
+                            <br><br><br>
+                            <p class="text-end"> 愛你的XX</p>
+                        </blockquote> -->
+                        <form action="" id="cardsection">
+                            <!-- <input type="text"id="cardsection"> -->
+                            <textarea rows="10" cols="80" id="cardtext" placeholder="請輸入卡片內容" value=""></textarea>
+                            <input type="submit" value="完成" id="cardbtn">
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-lg-12 d-flex justify-content-center">
+                    <!-- <a href="#step4" class="btn1">Next</a> -->
+                </div>
+            </div>
+            <div class="container-md homeblock">
+                <hr class="p-2">
+                <p class=" d-flex justify-content-center stepblock" id="step4">Step4 確認禮物</p>
+                <hr class="p-2">
+            </div>
+            <div id="step4"></div>
+            <div class="homeblock3"></div>
+            <!-- 步驟4 -->
+            <div>
+                <div class="container stepdiv">
+                    <div class="row d-flex justify-content-center align-items-center">
+
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <img class="stepbar w-100" id="showbox" src="/pic/customize/box1.png">
+                                </div>
+                                <div class="col-lg-6">
+                                    <img class="stepbar w-100" id="showbag" src="/pic/customize/bag11.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 ">
+
+
+                            <!-- 確認規格 -->
+                            <div class="count">
+                                <form action="/customize" method="post" id="customize1">
+                                    <p>Size：<input id="showsize" value="" name="csize"></input>
+                                    </p>
+                                    <p>Cookies：</p>
+                                    <p>1：<input id="showcookie1" value="" name="cc1"></input></p>
+                                    <p>2：<input id="showcookie2" value="" name="cc2"></p>
+                                    <p>3：<input id="showcookie3" value="" name="cc3"></p>
+                                    <p>4：<input id="showcookie4" value="" name="cc4"></p>
+                                    <p>Box：<input id="showboxcolor" value="" name="cbox"></p>
+                                    <p>bag：<input id="showbagcolor" value="" name="cbag"></p>
+                                    <p>Card：<input id="showcard" value="" name="card"></p>
+                                    <p>Price：<input id="showmoney" value="" name="cprice2"></input></p>
+                                    <span>數量：</span>
+                                    <button id="decreaseBtn" class="btn2 ">-</button>
+                                    <span id="number">1</span>
+                                    <button id="increaseBtn" class="btn2 ">+</button>
+
+                                    <div class="homeblock3"></div>
+                                    <input class="btn1 addtocart " type="submit" value="加入購物車"></input>
+                                </form>
+                                <!-- <form action="/mycustomize" method="post">
+                                        <button>test</button>
+                                    </form> -->
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%- include("./footer.ejs") %>
+                <!-- 這邊是最後的結束標籤 -->
+        </div>
+        <script>
+
+            // 更換紙袋顏色
+            function get_num1(item) {
+                var bagimg = document.getElementById(item.id);
+                // console.log('這是bagimg' + bagimg.id);
+                document.getElementById('imgstep1').src = "/pic/customize/bag" + parseInt(bagimg.id) + ".png";
+                document.getElementById('showbag').src = "/pic/customize/bag" + parseInt(bagimg.id) + ".png";
+                document.getElementById("showbagcolor").value = bagimg.value;
+            }
+            // 更換盒子顏色
+            function get_num2(item) {
+                var boximg = document.getElementById(item.id);
+                // console.log(boximg);
+                document.getElementById('imgstep2').src = "/pic/customize/box" + parseInt(boximg.id) + ".png";
+                document.getElementById('showbox').src = "/pic/customize/box" + parseInt(boximg.id) + ".png";
+                document.getElementById("showboxcolor").value = boximg.value;
+            }
+
+            // 步驟4的數量加減
+            $(document).ready(function () {
+                // 綁定 "-" 按鈕的點擊事件處理
+                $("#decreaseBtn").click(function (event) {
+                    event.preventDefault(); // 阻止預設行為
+                    var number = parseInt($("#number").text());
+                    number--;
+                    $("#number").text(number);
+                });
+
+                // 綁定 "+" 按鈕的點擊事件處理
+                $("#increaseBtn").click(function (event) {
+                    event.preventDefault(); // 阻止預設行為
+                    var number = parseInt($("#number").text());
+                    number++;
+                    $("#number").text(number);
+                });
+            });
+            // 隱藏盒子
+            function hide(item) {
+                // console.log(item);
+                var hideitem = document.getElementById(item.id);
+                // console.log(hideitem); 
+                //Hide All Tabs
+                document.getElementById("box_40").style.display = "none";
+                document.getElementById("box_41").style.display = "none";
+                //Show the Selected Tab
+                document.getElementById("box_" + hideitem.id).style.display = "grid";
+                document.getElementById("showsize").value = hideitem.value;
+                document.getElementById("showmoney").value = "$" + hideitem.classList;
+            }
+            // ==============================================================================
+            // 餅乾放置盒子的功能
+            // 滑鼠按下同時加上包裝以及變大v
+            document.getElementById('c_cookieimg_container').addEventListener('mousedown', function (e) {
+                drag_img = e.target
+                // console.log(drag_img.src.length)
+                if (drag_img.src.length > 47) {
+                    drag_img.src = `${drag_img.src.substr(0, 42) + '.png'}`
+                } else {
+                    drag_img.src = `${drag_img.src.substr(0, 41) + '.png'}`
+                }
+                let box_display_style = document.getElementById("box_40").style.display;
+                if (box_display_style === "none") {
+                    drag_img.classList.add("drag_img_for_box9");
+                } else {
+                    drag_img.classList.add("drag_img_for_box4");
+                }
+                // let source = null;
+                drag_img.addEventListener("dragstart", (e) => {
+                    // 抓取位置座標 --> 移到中間
+                    e.dataTransfer.setDragImage(drag_img, 120, 130);
+                    e.target.classList.add("dragging");
+                    // source = e.target;
+                    // console.log("11",e.target)
+                    // document.getElementById("showcookie1").value = e.target.value;
+                });
+                drag_img.addEventListener("dragend", (e) => {
+                    e.target.classList.remove("dragging");
+                    // source = null;
+                });
+                const containers_leftTop = document.querySelector("#containers_leftTop");
+                containers_leftTop.addEventListener("dragover", (e) => {
+                    e.preventDefault()
+                });
+                containers_leftTop.addEventListener("drop", (e) => {
+                    if (!containers_leftTop.innerHTML) {
+                        e.target.appendChild(drag_img);
+                        // console.log(e.target.querySelector('img').classList[1])
+                        document.getElementById("showcookie1").value = (e.target.querySelector('img').classList[1]);
+                        e.target.classList.remove("dragging")
+                    } else {
+                        return
+                    }
+                    // console.log("box detect");
+                    // console.log(!containers_leftTop.innerHTML)
+                });
+                containers_leftTop.addEventListener("dragenter", (e) => {
+                    e.target.classList.add("hover");
+                });
+                containers_leftTop.addEventListener("dragleave", (e) => {
+                    e.target.classList.remove("hover");
+
+                });
+                // =================
+                const containers_rightTop = document.querySelector("#containers_rightTop");
+                containers_rightTop.addEventListener("dragover", (e) => {
+                    e.preventDefault()
+                });
+                containers_rightTop.addEventListener("drop", (e) => {
+                    if (!containers_rightTop.innerHTML) {
+                        e.target.appendChild(drag_img);
+                        document.getElementById("showcookie2").value = (e.target.querySelector('img').classList[1]);
+                        e.target.classList.remove("dragging");
+                    } else {
+                        return
+                    }
+                });
+                containers_rightTop.addEventListener("dragenter", (e) => {
+                    e.target.classList.add("hover");
+                });
+                containers_rightTop.addEventListener("dragleave", (e) => {
+                    e.target.classList.remove("hover");
+
+                });
+                // =================
+                const containers_leftBottom = document.querySelector("#containers_leftBottom");
+                containers_leftBottom.addEventListener("dragover", (e) => {
+                    e.preventDefault()
+                });
+                containers_leftBottom.addEventListener("drop", (e) => {
+                    if (!containers_leftBottom.innerHTML) {
+                        e.target.appendChild(drag_img);
+                        document.getElementById("showcookie3").value = (e.target.querySelector('img').classList[1]);
+                        e.target.classList.remove("dragging");
+                    } else {
+                        return
+                    }
+                });
+                containers_leftBottom.addEventListener("dragenter", (e) => {
+                    e.target.classList.add("hover");
+                });
+                containers_leftBottom.addEventListener("dragleave", (e) => {
+                    e.target.classList.remove("hover");
+                });
+                // =================
+                const containers_rightBottom = document.querySelector("#containers_rightBottom");
+                containers_rightBottom.addEventListener("dragover", (e) => {
+                    e.preventDefault()
+                });
+                containers_rightBottom.addEventListener("drop", (e) => {
+                    if (!containers_rightBottom.innerHTML) {
+                        e.target.appendChild(drag_img);
+                        document.getElementById("showcookie4").value = (e.target.querySelector('img').classList[1]);
+                        e.target.classList.remove("dragging");
+                    } else {
+                        return
+                    }
+                });
+                containers_rightBottom.addEventListener("dragenter", (e) => {
+                    e.target.classList.add("hover");
+                });
+                containers_rightBottom.addEventListener("dragleave", (e) => {
+                    e.target.classList.remove("hover");
+                });
+
+            })
+
+
+            $("#cardsection").on('submit', function (e) {
+                e.preventDefault();
+                var text = document.getElementById('cardtext').value
+                // console.log(e)
+                // console.log("這是text");
+                // console.log(text);
+                document.getElementById("showcard").value = text;
+            })
+
+            // $(function () {
+            //     $('#cardbtn').click(function () {
+            //         // console.log("lll")
+            //         $('#showcard').value($('#cardtext').val());
+            //     });
+            // });
+
+
+            $(document).ready(function () {
+                $("#customize1").on('submit', function (e) {
+                    e.preventDefault();
+                    let size = document.getElementById('showsize').value
+                    let cookie1 = document.getElementById('showcookie1').value
+                    let cookie2 = document.getElementById('showcookie2').value
+                    let cookie3 = document.getElementById('showcookie3').value
+                    let cookie4 = document.getElementById('showcookie4').value
+                    let showboxcolor = document.getElementById('showboxcolor').value
+                    let showbagcolor = document.getElementById('showbagcolor').value
+                    let showcard = document.getElementById('showcard').value
+                    let showmoney = parseInt(document.getElementById('showmoney').value.substr(1))
+                    let number = parseInt(document.getElementById('number').innerHTML)
+                    // console.log(size)
+                    // console.log(cookie1)
+                    // console.log(showbagcolor)
+                    // console.log(showmoney)
+                    let data = {
+                        "size": size,
+                        "showcookie1": cookie1,
+                        "showcookie2": cookie2,
+                        "showcookie3": cookie3,
+                        "showcookie4": cookie4,
+                        "showboxcolor": showboxcolor,
+                        "showbagcolor": showbagcolor,
+                        "deliever_fee": "100",
+                        "showcard": showcard,
+                        "order_amout": showmoney,
+                        "quantity": 1,
+                        "status": "購物車",
+                        "number": number
+                    }
+                    $.ajax({
+                        url: "http://localhost:5678/customize",
+                        method: "post",
+                        contentType: "application/json",
+                        data: JSON.stringify(data),
+
+                        success: function (res) {
+                            if (res.status === 1) {
+                                alert('請先登入後再進行此操作')
+                                location.href = '/user';
+                            }
+                            console.log("data")
+                        }
+                    })
+                })
+            })
+
+        </script>
+
+
+</body>
+
+</html>

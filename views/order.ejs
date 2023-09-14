@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniDessert</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/member.css">
+  </head>
+  <body class="member_body">
+    <%-include('nav') %>
+    <% if ( typeof noOrder !== "undefined" && noOrder) { %>
+      <section class="mt-130 container-uni page-top-position">
+        <div class="row-uni member_section">
+          <aside class="col-12-uni col-md-3-uni col-lg-2-uni"> 
+            <div class="member_linkleft row"><a href="/member">基本資料</a><a class="active" href="/order">訂單紀錄</a></div>
+          </aside>
+          <div class="container-uni col-12-uni col-md-9-uni col-lg-10-uni tab_content" id="">
+            <div class="member_link mb-2-uni"><a class="active member_link_border_left" href="/member">歷史訂單</a></div>
+            <p class="noOrder">尚無訂單紀錄</p>
+          </div>
+        </div>
+        </section>  
+    <% } else { %>
+      <section class="mt-130 container-uni page-top-position">
+      <div class="row-uni member_section">
+        <aside class="col-12-uni col-md-3-uni col-lg-2-uni"> 
+          <div class="member_linkleft row"><a href="/member">基本資料</a><a class="active" href="/order">訂單紀錄</a></div>
+        </aside>
+        <div class="container-uni col-12-uni col-md-9-uni col-lg-10-uni tab_content" id="">
+          <div class="member_link mb-2-uni"><a class="active member_link_border_left" href="/member">歷史訂單</a></div>
+          <% for (let i = 0; i < member_info.length; i++) { %>
+            <% if (member_info[i].uid === uid) { %>
+              <% let totalOrderAll = 0; %>
+              <% let order_total = parseInt(member_info[i].order_total);
+              let deliever_fee = parseInt(member_info[i].deliever_fee);
+              let order_all = order_total + deliever_fee; %> 
+           <% totalOrderAll += order_all; %> 
+              <div class="member_container">
+              <form action="/order" id="oder" method="get">
+                <div class="row">
+                  <div class="col-5 row">
+                    <p class="member_text">訂單編號: <%= member_info[i].oid %></p>
+                    <p class="member_text">訂購日期: <%= member_info[i].order_date %></p>
+                    <p class="member_text">應付金額: $<%= totalOrderAll %></p>
+                    <!-- <p class="member_text">訂購日期: <%= member_info[i].order_date %></p> -->
+                  </div>
+                  <div class="col-7 row">
+                    <!-- <div class="row-nowrap "> -->
+                      <div class="row mb-5">
+                        <p class="member_text col-8">送達日期: <%= member_info[i].arrive_date %></p>
+                        <div class="member_order col-4 align-items-end ">
+                          <a  href="/order/historyOrder">取消訂單</a>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <p class="member_text col-8">處理進度: <%= member_info[i].order_status %></p>
+                        <div class="member_order col-4 align-items-end ">
+                          <a  href="/order/historyOrder/<%= member_info[i].oid %>">訂單詳細</a>
+                        </div>
+                      </div>
+                    <!-- </div> -->
+                  </div>
+                </div>
+              </form>
+              </div>
+            <%}%>
+          <%}%>
+        </div>
+      </div>
+      </section>
+    <% } %>
+    <%-include('footer') %>
+    <script>
+      // function 
+    </script>
+    <a class="page-top" href="#">TOP</a>
+    <script src="/js/bootstrap.bundle.js"></script>
+    <script src="/js/jquery-3.7.0.min.js"></script>
+    <script src="/js/script.js"></script>
+  </body>
+</html>

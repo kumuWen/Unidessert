@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidessert有你甜點|填寫訂單資料</title>
+    <link href="https://api.fontshare.com/v2/css?f[]=gambetta@400,1,300,600,701,2,501,401,301,601,500,700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Satisfy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <script src="/js/jquery-3.7.0.min.js"></script>
+    <link rel="stylesheet" href="/css/order2.css">
+    <script src="/js/cart2.js"></script>
+
+
+</head>
+
+<body>
+    <%- include("./nav.ejs") %>
+        <!-- 步驟圖片 -->
+        <picture>
+            <source media="(max-width: 768px)" srcset="/pic/cart/order2.png">
+            <img class="statement" src="/pic/cart/order2(2x).png">
+        </picture>
+        <!-- 步驟一 -->
+        <form action="/cart/fillout" id="cartform">
+            <div class="container mycontainer">
+                <div class="row">
+                    <div class="col-12 col-md-8 mb-4">
+                        <div>
+                            <div class="card">
+                                <div class="card-header topic">1.運送(宅配)</div>
+                                <div class="card-body">
+                                    <div class="row mb-3">
+                                        <label for="recipient" class="form-label col-2">收件人*:</label>
+                                        <div class="col-10">
+                                            <input name="recipient" type="text" id="recipient" required class="form-control"
+                                                required placeholder="王大明">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="address_code" class="form-label col-2">地址*:</label>
+                                        <div class="col-sm-2">
+                                            <input name="address_code" type="text" id="address_code"
+                                                class="form-control" maxlength="5" required placeholder="408">
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input name="address" type="text" id="address" class="form-control" required
+                                                placeholder="台中市西區公益路二段51號18樓">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="tel" class="form-label col-2">手機號碼*:</label>
+                                        <div class="col-10">
+                                            <input name="tel" type="tel" id="tel" class="form-control" maxlength="10"
+                                                required placeholder="09xxxxxxxx">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="email" class="form-label col-2">電子信箱*:</label>
+                                        <div class="col-10">
+                                            <input name="email" type="email" id="email" class="form-control"
+                                                maxlength="40" required placeholder="uni@gmail.com">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="arrive_date" class="form-label col-2">到貨日期*:</label>
+                                        <div class="col-10">
+                                            <input name="arrive_date" required type="date" id="arrive_date" class="form-control"
+                                                required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </divid=>
+                        </div>
+                        <!-- 旁邊的訂單確認 -->
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="card order_info_card" id="order_info_card">
+                            <div class="card-header topic">訂單資訊</div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="item">總計商品數</div>
+                                        <div class="item">
+                                            <%= product_quantity %>件
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="item">商品金額：</div>
+                                        <div class="item">$ <%= sum %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="item">運費：</div>
+                                        <div class="item">$ <%= deliever_fee %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between">
+                                        <div class="item">訂單總額：</div>
+                                        <div class="item">$ <%= order_total %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- 步驟二 -->
+                <div class="row">
+                    <div class="col-12 col-md-8 mb-4">
+                        <div>
+                            <div class="card">
+                                <div class="card-header topic">2.付款</div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <!-- <p>選擇付款方式</p> -->
+                                    </div>
+                                    <div class="mb-3">
+                                        <!-- <div class="form-check">
+                                    <input name="pay_type" type="radio" id="credit-card"
+                                        class="form-check-input"
+                                        onchange="togglePaymentInfo('credit-card')">
+                                    <label for="credit-card" class="form-check-label">信用卡/金融簽帳卡</label>
+                                </div> -->
+                                        <div class="form-check">
+                                            <input name="pay_type" type="radio" id="cash" class="form-check-input"
+                                                checked>
+                                            <label for="cash" class="form-check-label">貨到付款</label>
+                                        </div>
+                                    </div>
+                                    <!-- <div id="credit-card-info" class="payment-info mb-3" style="display: none;">
+                                        <div class="row mb-3">
+                                            <label for="credit-card-number" class="form-label col-3">信用卡號碼*:</label>
+                                            <div class="col-9">
+                                                <input name="credit-card-number" type="tel" id="credit-card-number"
+                                                    class="form-control" maxlength="16" required>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="expiration_date" class="form-label col-3">有效日期*:</label>
+                                            <div class="col-9">
+                                                <input name="expiration_date" type="date" id="expiration_date"
+                                                    class="form-control" required>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <label for="tel_cvn" class="form-label col-3">CVN*:</label>
+                                            <div class="col-2">
+                                                <input name="tel_cvn" type="number" id="tel_cvn"
+                                                    class="form-control" placeholder="" maxlength="4" required>
+                                            </div>
+                                            <div class="col-7 ">
+                                                <p class="fs-5 mt-3">此代碼為印於信用卡正面或背面的三位或四位數字</p>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                            </divd=>
+                        </div>
+                    </div>
+                </div>
+                <!-- 步驟三 -->
+                <div class="row">
+                    <div class="col-12 col-md-8">
+                        <div>
+                            <div class="card">
+                                <div class="card-header topic ">3.索取發票</div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <p>發票類型</p>
+                                    </div>
+                                    <div class="mb-3">
+                                        <!-- <div class="form-check">
+                                <input type="radio" name="bill-option" id="companyBill" class="form-check-input"
+                                    onchange="toggleBillInfo('companyBill')">
+                                <label for="companyBill" class="form-check-label">公司用(統編)</label>
+                            </div> -->
+                                        <div class="form-check">
+                                            <input name="bill-option" type="radio" id="cloudInvoice"
+                                                class="form-check-input" onchange="toggleBillInfo('cloudInvoice')">
+                                            <label for="cloudInvoice" class="form-check-label">雲端發票</label><br>
+                                            <input name="bill-option" type="radio" id="donateBill"
+                                                class="form-check-input" required
+                                                onchange="toggleBillInfo('donateBill')">
+                                            <label for="donateBill" class="form-check-label">捐贈</label>
+                                        </div>
+                                        <!-- <div class="form-check">
+                                        </div> -->
+                                    </div>
+                                    <div class="mb-3 ">
+                                        <!-- <div id="company-bill-info" style="display: none;" class="mx-3 mb-3 row">
+                                <label for="Invoice-title" class="col-3">發票抬頭</label>
+                                <input name="" type="text" class="col-9 " id="Invoice-title">
+                                <br>
+                                <label for="VAT-number" class="col-3">統一編號*</label>
+                                <input name="" type="text" class="col-9 mt-3" id="VAT-number" required
+                                    placeholder="必填">
+                            </div> -->
+                                        <div id="cloud-invoice-info" style="display: none;" class="mx-3">
+                                            <select name="cloudInvoice" id="invoiceTypeSelect"
+                                                onchange="toggleCloudInfo()">
+                                                <option value="phoneInvoice">手機載具</option>
+                                                <option value="naturalInvoice">自然人條碼</option>
+                                            </select>
+                                        </div>
+                                        <div id="phoneInfo" style="display: block;" class="mx-3">
+                                            <input name="cloudInvoice" type="text" id="cloudInvoice_input"
+                                                placeholder="請輸入您的手機條碼">
+                                        </div>
+                                        <div id="naturalInfo" style="display: none;" class="mx-3">
+                                            <input name="naturalInvoice" type="text" id="naturalInfo_input"
+                                                placeholder="請輸入您的自然人條碼">
+                                        </div>
+
+                                        <div id="donate-bill-info" style="display: none;">
+                                            <select name="donate_bill_info" class="mx-3" id="donate_bill_option">
+                                                <option>財團法人看見台灣基金會</option>
+                                                <option>財團法人台灣世界展望會</option>
+                                                <option>關懷台灣文教基金會</option>
+                                                <option>勵馨社會福利事業基金會</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    <div class="mb-3 mt-3 button-group" style="text-align: center;">
+                                        <div class="button-row">
+                                            <a href="/cart"><input type="button" value="返回購物車"
+                                                    class="my-button "></a>
+                                            <a href="#" id="cart_check_btn">
+                                                <input type="submit" value="確認訂單" class="my-button" id="cartform_button">
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            </divd=>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4" style="width: 10%">
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div style="height: 90px;"></div>
+        <%- include("./footer.ejs") %>
+        <script>
+        </script>
+</body>
+</html>

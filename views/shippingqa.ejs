@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>配送問題</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+   <link rel="stylesheet" href="/css/nav_footer.css">
+   <link rel="stylesheet" href="/css/shippingqa.css">
+    <script src="/js/bootstrap.bundle.js"></script>
+    <script src="/js/jquery-3.7.0.min.js"></script>
+    <script src="/js/jquery-ui.js"></script>
+    <script src="/js/script.js"> </script>
+
+</head>
+
+
+
+<body style="background-color: #eadfd9;">
+     <!-- nav -->
+     <%- include("./nav.ejs") %>
+
+    <!-- 其他問題QA-->
+    <p  class=" d-flex justify-content-center " id="toptitle" > Q&A - 常見問題 </p><br>
+
+    <div id="topbtn" align="center" >
+        <a href="./orderqa"><button class="topbtn">訂單問題</button></a>
+        <a href="./shippingqa"><button class="topbtn" style="background-color: #F0c7cd;">配送問題</button></a>
+        <a href="./payqa"><button class="topbtn">付款方式</button></a>
+        <a href="./qaindex"><button class="topbtn">其他常見問題</button></a>
+    </div>
+
+    <div class="d-flex justify-content-center" >
+        <figure class="figure" >
+            <img id="qaimg" src="/pic/qa/shipping.png"  class=" figure-img img-fluid rounded  d-block"  alt="...">
+            <figcaption class="figure-caption" style="font-size: 1.5rem;">
+                
+                【出貨及運費｜相關問題】<br>
+                1、預購出貨時間<br>
+                訂單出貨區間顯示於官網商品頁，及您的訂單內頁
+                不提供訂單指定出、到貨日<br>
+                2、配送方式<br>
+
+                ➤黑貓宅急便：出貨後約1至3個工作天配達<br>
+                ➤超商取貨：出貨後約2至5個工作天配達<br>
+
+
+                3、運費計算<br>
+                訂單單筆金額滿「新台幣1850元」，
+                以商品總金額扣除商品折扣及折扣碼的金額計算，
+                則當筆訂單免運費若您當筆訂單未達免運費門檻，
+                則您需自行負擔當筆訂單之「常溫運費新台幣120元整」
+                （當筆訂單是否達免運費門檻，請依官網結帳頁面顯示為主）
+                <br>
+                4、Unidessert 官方購買通路<br>
+                ➤官網：https://www.unidessert.com/ <br>
+                ➤實體門市： 407台中市西屯區福星路593號
+         
+            </figcaption>
+        </figure>
+    </div>
+    <!-- footer -->
+    <%- include("./footer.ejs") %>
+</body>
+
+</html>

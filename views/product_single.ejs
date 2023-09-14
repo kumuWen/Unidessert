@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidesssrt</title>
+    <link href="https://api.fontshare.com/v2/css?f[]=gambetta@400,1,300,600,701,2,501,401,301,601,500,700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Satisfy&display=swap" rel="stylesheet">
+
+    <script src="/js/jquery-3.7.0.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <script src="/js/bootstrap.bundle.js"></script>
+
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/nav_footer.css">
+    <link rel="stylesheet" href="/css/product.css">
+    <link rel="stylesheet" href="/css/product_single.css">
+</head>
+
+<body id="body">
+    <%- include("./nav.ejs") %>
+        <figure class="topPic_container">
+            <img src="\pic\product\product_banner2.png" class="topPic" alt="dessert_picture">
+        </figure>
+
+        <section>
+            <div class="row_container">
+                <% for( let i=0; i < p_single_info.length; i++){ %>
+                    <div class="column_container">
+                        <div class="productPic_container">
+                            <img class="productPic" src=<%=p_single_info[i].p_pic %> alt="cannelé">
+                        </div>
+                        <div class="productText" id="p_name<%= i+1 %>"><%= p_single_info[i].pd_name %></div>
+                        <div class="productPrice" id="product_price<%= i+1 %>">NT <%= p_single_info[i].p_price %>
+                        </div>
+                        <button class="add_to_cart_button addtocart" id="add_to_cart_button<%= i+1 %>">加入購物車</button>
+                    </div>
+                    <% } %>
+        </section>
+        <%- include("./footer.ejs") %>
+
+        <script src="/js/product_single.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>活動優惠</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/nav_footer.css">
+    <script src="/js/bootstrap.bundle.js"></script>
+    <script src="/js/jquery-3.7.0.min.js"></script>
+    <script src="/js/script.js"> </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Satisfy&display=swap');
+        @import url('https://api.fontshare.com/v2/css?f[]=gambetta@400,1,300,600,701,2,501,401,301,601,500,700&display=swap');
+
+        .rightbtn:hover {
+            background-color: #eadfd9;
+
+        }
+
+        p {
+            font-size: 2rem;
+        }
+
+        .rightbtn {
+            border-radius: 10px;
+            border: 1px;
+            width: 10vw;
+            height: 5vh;
+            margin: 10px;
+            margin-left: 17%;
+            font-size: 1.5rem;
+        }
+
+        #insearch {
+            border-radius: 10px;
+            border: 1px solid;
+            font-size: 1rem;
+            margin: 10px;
+            width: 10vw;
+            height: 5vh;
+        }
+
+        .newscontent {
+            font-size: 1.5rem;
+        }
+        #rightbar {
+            background-color: #f0c7cd;
+            float: left;
+            height: 400px;
+            margin-right: 10px;
+        }
+        @media screen and (max-width: 768px) {
+            .rightbtn {
+                border-radius: 10px;
+                border: 1px;
+                width: 20vw;
+                height: 6vh;
+                margin: 5px;
+
+                font-size: 1.5rem;
+
+            }
+
+            #rightbar {
+                height: 200px;
+                width: 710px;
+                margin-bottom: 30px;
+                padding-top: 20px;
+            }
+
+            #insearch {
+                border-radius: 10px;
+                border: 1px solid;
+                width: 25vw;
+                height: 6vh;
+                font-size: 1rem;
+                margin: 5px;
+            }
+
+            #search{
+                margin-left: 50%;
+                margin-top:-45px;
+            }
+             #update{
+                margin-left: 4%;
+            }
+        }
+
+            
+    </style>
+
+<body>
+    <!-- nav -->
+    <%- include("./nav.ejs") %>
+
+    <!-- 內容 -->
+    <div class="container" style="max-width: 100%;padding: 30px;margin-top: 150px;">
+        <div class="row" style="max-width: 100%; ">
+            <div class=" col-md-2 mb-3" id="rightbar">
+
+
+              <a href="./news">
+                 <button class="rightbtn">活動優惠</button>
+              </a> 
+              <a href="./important">
+                <button class="rightbtn">重要公告</button>
+              </a>
+               <div id="search"> 
+                <input type="text" placeholder="文章搜尋 " style=" margin-left: 17%;" id="insearch">
+              </div> 
+               <div id="update" style="font-size: 1.5rem;">
+                    update:2023/06/07 <br>
+                    ~活動最新消息~ <br> 歡迎追蹤IG/FB社群
+                </div>
+            </div>
+
+            <div class="col  col-md-10 " style="background-color:#eadfd9 ;width: 80%;">
+
+                <p style="font-size: 2rem;padding-top: 10px;">防詐騙重要公告</p><hr>
+                <div style="word-wrap: break-all;font-size: 1.5rem;width:1000px ;margin-left: 10%;line-height: 60px;max-width: fit-content; "> 親愛的客戶您好：<br>
+
+                    近來詐騙手法層出不窮，有你甜點不會以任何名義透過電話、簡訊、客服Email、核對銀行帳戶或信用卡資料，亦不會因網路付款發生設定錯誤等理由而要求您操作ATM解除、變更付款方式或補繳金額。如接獲不明及可疑的電話或簡訊提出上述要求時，請勿提供任何資料，立即撥打165反詐騙專線，如有任何建議或疑問，請以客服專線，與客服聯繫，非上班時間亦可至聯繫我們留言，本公司將竭誠為您服務。
+
+
+                    <br>
+                    防詐騙方法
+                    <br>
+                    不依指示操作ATM
+                    詐騙集團會要求客戶去ATM轉換英文操作介面，是為了誘使您轉帳。ATM沒有退款、解除分期付款…等功能，請您務必小心。有你甜點不會任意變更已付款的訂單，不會要求您依照指示操作使用ATM。
+                    <br>
+                    不告知個人資料
+                    我們刷卡金流使用第三金流單位，故有你甜點無法得知任何客戶信用卡資料，若您接到任何可疑電話向您核對或索取銀行帳戶、信用卡資料等個人或金融相關資料，請提高警覺、切勿提供。
+
+
+
+                </div>
+            </div>    
+                <!-- footer -->
+                <%- include("./footer.ejs") %>
+</body>
+
+</html>

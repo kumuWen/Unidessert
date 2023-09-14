@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>付款方式</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+   <link rel="stylesheet" href="/css/nav_footer.css">
+   <link rel="stylesheet" href="/css/payqa.css">
+    <script src="/js/bootstrap.bundle.js"></script>
+    <script src="/js/jquery-3.7.0.min.js"></script>
+    <script src="/js/jquery-ui.js"></script>
+    <script src="/js/script.js"> </script>
+    <script src="/js/script.js"> </script>
+
+</head>
+
+
+</head>
+
+<body style="background-color: #eadfd9;" >
+    <!-- nav -->
+    <%- include("./nav.ejs") %>
+    <!-- 其他問題QA-->
+    <p class=" d-flex justify-content-center " id="toptitle" > Q&A - 常見問題 </p><br>
+
+   <div id="topbtn" align="center" >
+      <a href="./orderqa"><button class="topbtn ">訂單問題</button></a>
+      <a href="./shippingqa"><button  class="topbtn">配送問題</button></a>
+      <a href="./payqa"><button class="topbtn" style="background-color: #F0c7cd;">付款方式</button></a>
+      <a href="./qaindex"><button class="topbtn"  >其他常見問題</button></a>
+   </div>
+    </div>
+    
+    <div class="d-flex justify-content-center">
+        <figure class="figure" >
+            <img id="qaimg" src="/pic/qa/payfunction.png" class=" figure-img img-fluid rounded  d-block" alt="...">
+            <figcaption class="figure-caption" style="font-size: 1.5rem;">
+                
+                【付款相關問題】<br>
+                1.付款方式<br>
+                -信用卡，Apple Pay和Tap&Go付款<br>
+                *付款成功將收到付款確認通知信<br>
+                *取消訂單規定：自訂單成立起7天後（包含第7天）即排入產程，或商品已出貨，符合前兩項任一條件，
+                非因不可抗力因素恕不提供取消訂單。
+                <br>
+                若因個人因素需取消訂單（包含但不限於訂購商品錯誤、官網顯示之出貨日期與個人需求不符等...），
+
+                將扣除相關手續費後退款。(相關手續費為訂單總金額x0.034+2.35)
+
+                <br>
+                2.變更付款方式
+                <br>
+                確認訂單未付款及取消後，請重新下單！
+                <br>
+
+                3.付款失敗
+                <br>
+                信用卡付款：<br>
+                付款動作失敗，訂單無法成立，系統將自動取消訂單，確認訂單取消後可直接重新下單
+
+            </figcaption>
+        </figure>
+    </div>
+    <!-- footer -->
+    <%- include("./footer.ejs") %>
+
+</body>
+
+</html>
