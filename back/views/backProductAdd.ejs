@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>訂單</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/jquery-ui.css">
+    <script src="/js/bootstrap.bundle.js"></script>
+    <script src="/js/jquery-3.7.0.min.js"></script>
+    <script src="/js/jquery-ui.js"></script>
+</head>
+
+<body>
+    <div class="all">
+        <%- include('backNav') %>
+        
+        <div class="content d-flex">
+            <div class="container">
+                <div class="me-auto">
+                    <p class="text-end">
+                        user01，您好！|
+                        <a href="/">登出</a>
+                    </p>
+                </div>
+                <div class="product d-flex">
+                    <div style="width: 100%;">
+                        <p class="fs-4 fw-bold">
+                            新增產品
+                        </p>
+                    </div>
+                    <div class="row" style="width: 100%;">
+                        <div class="col-6">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th class="col-3"><label for="backProNumber">產品編號</label></th>
+                                        <td class="col-3"><input id="backProNumber" type="text" name="backProNumber" required></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="col-3"><label for="backProName">產品名稱</label></th>
+                                        <td class="col-3"><input id="backProName" type="text" name="backProName" required></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="col-3"><label for="backProClass">分類</label></th>
+                                        <td class="col-3">
+                                            <select id="backProClass" name="backProClass" required>
+                                                <option>請選擇產品分類</option>
+                                                <option>餅乾單包</option>
+                                                <option>蛋糕單品</option>
+                                                <option>餅乾禮盒包</option>
+                                                <option>蛋糕禮盒包</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="col-3"><label for="backProPrice">產品單價</label></th>
+                                        <td class="col-3"><input id="backProPrice" type="text" name="backProPrice" required>元</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="col-3"><label for="backProStock">庫存</label></th>
+                                        <td class="col-3"><input id="backProStock" type="text" name="backProStock" required></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="col-3">是否上架</th>
+                                        <td class="col-3">
+                                            <input id="backProStatus_on" type="radio" name="backProStatus"><label for="backProStatus_on">上架</label>
+                                            <input id="backProStatus_off" type="radio" name="backProStatus"><label for="backProStatus_off">不上架</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="col-3"><label for="backProDescribe">產品描述</label></th>
+                                        <td class="col-3"><input id="backProDescribe" type="text" name="backProDescribe"></td>
+                                    </tr>
+                                    <tr>
+                                        <th><a class="btn btn-secondary text-white" type="submit"
+                                                href="/backProduct" role="button">放棄編輯</a></th>
+                                        <td><a class="btn btn-danger text-white" type="submit"
+                                                href="/backProduct" role="button">儲存產品</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-6">
+                            <p>上傳產品圖片</p>
+                            <p>限PNG/JPG檔案，且每個檔案不超過5MB。</p>
+                            <button class="btn btn-primary m-1">選擇檔案上傳圖片1</button><br>
+                            <button class="btn btn-primary m-1">選擇檔案上傳圖片2</button><br>
+                            <button class="btn btn-primary m-1">選擇檔案上傳圖片3</button><br>
+                            <button class="btn btn-primary m-1">選擇檔案上傳圖片4</button><br>
+                            <button class="btn btn-primary m-1">選擇檔案上傳圖片5</button><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

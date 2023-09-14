@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>訂單編輯</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/jquery-ui.css">
+    <script src="/js/bootstrap.bundle.js"></script>
+    <script src="/js/jquery-3.7.0.min.js"></script>
+    <script src="/js/jquery-ui.js"></script>
+
+</head>
+
+<body>
+    <div class="all">
+        <%- include('backNav') %>
+        <div class="content d-flex">
+            <div class="container">
+                <div class="me-auto">
+                    <p class="text-end">
+                        user01，您好！|
+                        <a href="../backLogin/backLogin.html">登出</a>
+                    </p>
+                </div>
+                <div class="product d-flex">
+                    <div style="width: 100%;">
+                        <p class="fs-4 fw-bold">
+                            訂單資料
+                        </p>
+                        <hr>
+                    </div>
+                    <div class="row" style="width: 100%;">
+                        <div class="col-6">
+                            <form action="">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th class="col-3"><label for="oid">訂單編號</label></th>
+                                        <td class="col-3"><input type="text" name="oid" required></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="col-3"><label for="order_date">訂單日期</label></th>
+                                        <td class="col-3"><input type="text" name="order_date" required></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="col-3"><label for="order_status">訂單狀態</label></th>
+                                        <td class="col-3"><input type="text" name="order_status" required></td>
+                                    </tr>
+                                    
+                                
+                                    <tr>
+                                        <th class="col-3"><label for="order_total">訂單總額</label></th>
+                                        <td class="col-3"><input type="text" name="order_total" required>元</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="col-3"><label for="recipient">訂購人</label></th>
+                                        <td class="col-3"><input type="text" name="recipient" required></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="col-3"><label for="backProStatus">是否上架</label></th>
+                                        <td class="col-3">
+                                            <input type="radio" name="backProStatus"><span style="color:red;">上架</span>
+                                            <input type="radio" name="backProStatus">不上架
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="col-3"><label for="backProDescribe">產品描述</label></th>
+                                        <td class="col-3"><input type="text" name="backProDescribe"></td>
+                                    </tr>
+                                    <tr>
+                                        <th><a class="btn btn-secondary text-white" type="submit"
+                                                href="../backProduct/backProduct.html" role="button">放棄編輯</a></th>
+                                        <td><a class="btn btn-danger text-white" type="submit"
+                                                href="../backProduct/backProduct.html" role="button">儲存產品</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

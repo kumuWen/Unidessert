@@ -1,0 +1,25 @@
+#body {
+    margin: 0;
+    padding-top: 6%;
+    font-family: 'gambetta', 'noto sans tc';
+    background-color: #eadfd9;
+}
+section {
+    margin-top: 6%;
+}
+.productPic_container {
+    width: 65%;
+}
+.productPic_container {
+    overflow:hidden;
+}
+.productPic_container img {
+    transform:scale(1,1);
+    transition: all 0.5s ease-out;;
+}
+.productPic_container img:hover {
+    transform:scale(1.1,1.1);
+}
+.productPrice {
+    margin-bottom: 5%;
+}

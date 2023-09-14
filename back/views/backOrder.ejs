@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>訂單</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/jquery-ui.css">
+    <script src="/js/bootstrap.bundle.js"></script>
+    <script src="/js/jquery-3.7.0.min.js"></script>
+    <script src="/js/jquery-ui.js"></script>
+</head>
+
+<body>
+    <div class="all">
+        <%- include('backNav') %>
+        <div class="content d-flex">
+            <div class="container">
+                <div class="me-auto">
+                    <p class="text-end">
+                        user01，您好！|
+                        <a href="#">登出</a>
+                    </p>
+                </div>
+                <div class="product d-flex">
+                    <p class="fs-4">
+                        訂單列表
+                    </p>
+                    
+                    <table class="table fs-6 table-hover table-sm">
+                        <thead class="text-center table-warning">
+                          <tr>
+                            <th scope="col">訂單編號</th>
+                            <th scope="col">訂單日期</th>
+                            <th scope="col">訂單狀態</th>
+                            <th scope="col">訂購人帳號</th>
+                            <th scope="col">訂購人姓名</th>
+                            <th scope="col">總金額</th>
+                            <th scope="col">編輯/刪除</th>
+                          </tr>
+                        </thead>
+                        <tbody class="text-center">
+                          <%for (let k=0; k < order_list.length; k++) { %>
+                            <tr>
+                                <th scope="row"><%= order_list[k].oid %></th>
+                                <td><%= order_list[k].order_date %></td>
+                                <td><%= order_list[k].order_status %></td>
+                                <td><%= order_list[k].uid %></td>
+                                <td><%= order_list[k].recipient %></td>
+                                <td><%= order_list[k].order_total %></td>
+                                <th ><button><a href="/backOrderEdit">編輯</a></button>
+                                    <button><a href="/backOrderEdit">刪除</a></button>
+                                </th>
+                              </tr>
+                            <%}%>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td class="">
+                                   
+                                </td>
+                            </tr>
+                        </tfoot>
+                      </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>

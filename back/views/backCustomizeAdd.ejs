@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客製化新增</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/jquery-ui.css">
+    <script src="/js/bootstrap.bundle.js"></script>
+    <script src="/js/jquery-3.7.0.min.js"></script>
+    <script src="/js/jquery-ui.js"></script>
+    <style>
+        @import url('https://api.fontshare.com/v2/css?f[]=gambetta@400,1,300,600,701,2,501,401,301,601,500,700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Satisfy&display=swap');
+
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'gambetta', 'noto sans tc';
+        }
+
+        .all {
+            display: flex;
+            height: 100%;
+        }
+
+        .backMenuFC {
+            color: #702F43;
+        }
+
+        .side-menu {
+            flex: 0 1 320px;
+            padding: 50px 0;
+            box-sizing: border-box;
+            background-color: #EADFD9;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .side-menu form {
+            display: flex;
+            margin: 0 20px 0 20px;
+            height: 40px;
+            border-radius: 10px;
+            border: 2px solid rgba(112, 47, 67, 0.4);
+        }
+
+        .side-menu input,
+        .side-menu button {
+            border: none;
+            /* padding: 10px 10px; */
+            background-color: transparent;
+            color: rgb(112, 47, 67);
+        }
+
+        .dropdown-toggle {
+            border: none;
+            padding: 10px 10px;
+            margin-right: 20px;
+            margin-left: 20px;
+            background-color: transparent;
+            color: rgb(112, 47, 67);
+        }
+
+        .side-menu input:focus,
+        .side-menu button:focus {
+            outline: none;
+        }
+
+        .side-menu input {
+            width: 200px;
+        }
+
+        .side-menu button {
+            width: 80px;
+            height: 40px
+        }
+
+        .backSearch {
+            max-width: 40%;
+            height: 20px;
+            border: none;
+            background-color: transparent;
+            color: rgb(112, 47, 67);
+        }
+
+        .content {
+            flex: 1 1 500px;
+            overflow-y: overlay;
+            padding: 10px 20px;
+        }
+
+        .content .product {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .text-first {
+            color: #702F43;
+        }
+
+        .text-second {
+            color: #B44A60;
+        }
+
+        .text-third {
+            color: #CC7F91;
+        }
+
+        .btn-first {
+            background-color: #702F43;
+        }
+
+        .btn-second {
+            background-color: #B44A60;
+        }
+
+        .btn-third {
+            background-color: #CC7F91;
+        }
+
+        .btn-first:hover {
+            background-color: #702F43;
+        }
+
+        .btn-second:hover {
+            background-color: #B44A60;
+        }
+
+        .btn-third:hover {
+            background-color: #CC7F91;
+        }
+    </style>
+</head>
+<style>
+    @import url('https://api.fontshare.com/v2/css?f[]=gambetta@400,1,300,600,701,2,501,401,301,601,500,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Satisfy&display=swap');
+
+    html,
+    body {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        font-family: 'gambetta', 'noto sans tc';
+    }
+
+    .all {
+        display: flex;
+        height: 100%;
+    }
+
+    .backMenuFC {
+        color: #702F43;
+    }
+
+    .side-menu {
+        flex: 0 1 320px;
+        padding: 50px 0;
+        box-sizing: border-box;
+        background-color: #EADFD9;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .side-menu form {
+        display: flex;
+        margin: 0 20px 0 20px;
+        height: 40px;
+        border-radius: 10px;
+        border: 2px solid rgba(112, 47, 67, 0.4);
+    }
+
+    .side-menu input,
+    .side-menu button {
+        border: none;
+        /* padding: 10px 10px; */
+        background-color: transparent;
+        color: rgb(112, 47, 67);
+    }
+
+    .dropdown-toggle {
+        border: none;
+        padding: 10px 10px;
+        margin-right: 20px;
+        margin-left: 20px;
+        background-color: transparent;
+        color: rgb(112, 47, 67);
+    }
+
+    .side-menu input:focus,
+    .side-menu button:focus {
+        outline: none;
+    }
+
+    .side-menu input {
+        width: 200px;
+    }
+
+    .side-menu button {
+        width: 80px;
+        height: 40px
+    }
+
+    .backSearch {
+        max-width: 40%;
+        height: 20px;
+        border: none;
+        background-color: transparent;
+        color: rgb(112, 47, 67);
+    }
+
+    .content {
+        flex: 1 1 500px;
+        overflow-y: overlay;
+        padding: 10px 20px;
+    }
+
+    .content .product {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .text-first {
+        color: #702F43;
+    }
+
+    .text-second {
+        color: #B44A60;
+    }
+
+    .text-third {
+        color: #CC7F91;
+    }
+
+    .btn-first {
+        background-color: #702F43;
+    }
+
+    .btn-second {
+        background-color: #B44A60;
+    }
+
+    .btn-third {
+        background-color: #CC7F91;
+    }
+
+    .btn-first:hover {
+        background-color: #702F43;
+    }
+
+    .btn-second:hover {
+        background-color: #B44A60;
+    }
+
+    .btn-third:hover {
+        background-color: #CC7F91;
+    }
+
+    th,
+    td {
+        border: 1px solid black;
+    }
+
+    #adddatabtn {
+        background-color: skyblue;
+        border-radius: 10px;
+        border: 1px;
+        width: 10rem;
+        height: 3rem;
+        margin: 10px;
+        font-size: 1.3rem;
+        margin-left: 70%;
+    }
+
+    .backLogoTitle {
+        text-decoration: none;
+        color: #702F43;
+    }
+</style>
+<script>
+</script>
+
+<body>
+    <div class="all">
+        <div class="side-menu">
+            <a class="backLogoTitle" href="/">
+                <div class="backMenuFC fw-bold fs-5 text-center me-1">
+                    Unidessert<br>
+                    有你甜點 - 後台系統
+                </div>
+            </a>
+
+
+            <hr>
+            <!-- Default dropend button -->
+            <div class="btn-group dropend">
+                <button onclick="window.open('/backOrder')" type="button" class="btn btn-danger">
+                    訂單
+                </button>
+            </div>
+            <div class="btn-group dropend">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    產品
+                </button>
+                <ul class="dropdown-menu">
+                    <!-- Dropdown menu links -->
+                    <li><a class="dropdown-item" href="/backProduct">產品列表</a></li>
+                    <li><a class="dropdown-item" href="/backProductAdd">新增產品</a></li>
+                </ul>
+            </div>
+            <div class="btn-group dropend">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    客製包裝
+                </button>
+                <ul class="dropdown-menu">
+                    <!-- Dropdown menu links -->
+                    <li><a class="dropdown-item" href="/backCustomize">客製列表</a></li>
+                    <li><a class="dropdown-item" href="/backCustomizeAdd">新增客製產品</a></li>
+                </ul>
+            </div>
+            <div class="btn-group dropend">
+                <button onclick="window.open('/backMember')" type="button" class="btn btn-danger">
+                    會員
+                </button>
+            </div>
+            <div class="btn-group dropend">
+                <button onclick="window.open('/backNews')" type="button" class="btn btn-danger">
+                    NEWS
+                </button>
+            </div>
+            <div class="btn-group dropend">
+                <button onclick="window.open('/backQA')" type="button" class="btn btn-danger">
+                    Q&A
+                </button>
+            </div>
+            <div class="btn-group dropend">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    關於我們
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/backaboutUsname">品牌介紹</a></li>
+                    <li><a class="dropdown-item" href="/backaboutUsdata">店舖資訊</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content d-flex">
+            <div class="container">
+                <div class="me-auto">
+                    <p class="text-end">
+                        user01，您好！|
+                        <a href="../backLogin/backLogin.html">登出</a>
+                    </p>
+                </div>
+                <div class="product d-flex">
+                    <div style="width: 100%;">
+                        <p class="fs-4 fw-bold">
+                            新增客製產品
+                        </p>
+                    </div>
+                    <div class="row" style="width: 100%;">
+                        <div class="col-6">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th class="col-3"><label for="backProNumber">客製產品編號</label></th>
+                                        <td class="col-3"><input type="text" name="backProNumber" required></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="col-3"><label for="backProName">客製產品名稱</label></th>
+                                        <td class="col-3"><input type="text" name="backProName" required></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="col-3"><label for="backProClass">分類</label></th>
+                                        <td class="col-3">
+                                            <select name="backProClass" required>
+                                                <option>請選擇產品分類</option>
+                                                <option>紙盒分類</option>
+                                                <option>餅乾內容</option>
+                                                <option>袋子包裝</option>
+                                                <option>卡片</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="col-3"><label for="backProPrice">產品單價</label></th>
+                                        <td class="col-3"><input type="text" name="backProPrice" required>元</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="col-3"><label for="backProStock">庫存</label></th>
+                                        <td class="col-3"><input type="text" name="backProStock" required></td>
+                                    </tr>
+                                    <tr>
+                                        <th class="col-3"><label for="backProStatus">是否上架</label></th>
+                                        <td class="col-3">
+                                            <input type="radio" name="backProStatus"><span style="color:red;">上架</span>
+                                            <input type="radio" name="backProStatus">不上架
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="col-3"><label for="backProDescribe">產品描述</label></th>
+                                        <td class="col-3"><input type="text" name="backProDescribe"></td>
+                                    </tr>
+                                    <tr>
+                                        <th><a class="btn btn-secondary text-white" type="submit"
+                                                href="../backProduct/backProduct.html" role="button">放棄編輯</a></th>
+                                        <td><a class="btn btn-danger text-white" type="submit"
+                                                href="../backProduct/backProduct.html" role="button">儲存產品</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-6">
+                            <p>上傳產品圖片</p>
+                            <p>限PNG/JPG檔案，且每個檔案不超過5MB。</p>
+                            <button class="btn btn-primary m-1">選擇檔案上傳圖片1</button><br>
+                            <button class="btn btn-primary m-1">選擇檔案上傳圖片2</button><br>
+                            <button class="btn btn-primary m-1">選擇檔案上傳圖片3</button><br>
+                            <button class="btn btn-primary m-1">選擇檔案上傳圖片4</button><br>
+                            <button class="btn btn-primary m-1">選擇檔案上傳圖片5</button><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

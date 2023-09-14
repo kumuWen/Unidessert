@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Chart</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/jquery-ui.css">
+    <script src="/js/bootstrap.bundle.js"></script>
+    <script src="/js/jquery-3.7.0.min.js"></script>
+    <script src="/js/jquery-ui.js"></script>
+    <style>
+        #select{
+            display: none;
+        }
+        #chartCanvas{
+            width: 100%;
+            height: 80%;
+        }
+    </style>
+</head>
+<body>
+<div class="all">
+    <%- include('backNav') %>
+    <div class="container">
+    <div class="page-header">
+        <h1>2023年銷售量</h1>
+    </div>    
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- 統計圖畫在這裡 -->
+            <canvas id="chartCanvas"></canvas>
+        </div>
+    <div id="select">變數放這邊
+        <% for (const month in ordersByMonth) { %>
+            <h1>Order List for Month <%= month %></h1>
+            <ul>
+                <% for (const order of ordersByMonth[month]) { %>
+                    <li>
+                        Order ID: <%= order.oid %><br>
+                        Order Date: <%= order.order_date %><br>
+                        Order Total: <%= order.order_total %>
+                    </li>
+                <% } %>
+            </ul>
+            <p>Total Amount for Month <%= month %>: <%= monthlyTotals[month] %></p>
+        <% } %>
+    </div>
+
+    </div>
+    </div>
+</div>
+
+
+ <script>
+        // 将 monthlyTotals 中的数据传递给 sales 变量
+        var sales = [
+            <% for (const month in ordersByMonth) { %>
+                <%= monthlyTotals[month] %>,
+            <% } %>
+        ];
+
+        var mounthlist = ["Jan","Feb","Mar","Apr","May","Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+        // Lab 練習的程式寫在這裡
+        var ctx = document.getElementById("chartCanvas");
+        var labChart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: mounthlist,
+                datasets: [
+                    {
+                        label: "sales",
+                        data: sales,
+                        fill: false,
+                        // 著色:
+                        backgroundColor: "rgba(14, 72, 100, 0.2)",
+                        borderColor: "rgba(14, 72, 100, 1.0)",
+                        borderWidth: 1,
+                    },
+
+                ]
+            }
+        });
+    </script>
+            
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>後端首頁</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <script src="/js/bootstrap.bundle.js"></script>
+    <script src="/js/jquery-3.7.0.min.js"></script>
+    <script src="/js/jquery-ui.js"></script>
+    <style>
+        body {
+            /* background-color: #FFF4E0 FFBF9B B46060 4D4D4D; */
+            background-color: #EADFD9;
+        }
+
+        .login_container {
+            width: 25%;
+            position: absolute;
+            top: 20%;
+            left: 37%;
+            display: flex;
+            flex-direction: column;
+            padding: 5% 4% 5% 4%;
+            /* border: 2px solid #702F43; */
+            border-radius: 5px;
+            background-color: #B44A60;
+        }
+
+        .login_container input {
+            margin: 5% 0%;
+            padding: 5%;
+        }
+
+        .login_container p {
+            text-align: center;
+            font-size: 2rem;
+            color: #FFF4E0;
+        }
+
+        .login_btn {
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 10px;
+            color: #EADFD9;
+            background-color: #702F43;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="all">
+        <form id="login_form" class="login_container" method="post" action="/">
+            <p>登入</p>
+            <input id="username_id" type="text" placeholder="請輸入帳號" name="username" value="admin">
+            <input id="password_id" type="password" placeholder="請輸入密碼" name="password" value="6688">
+            <input class="login_btn" type="submit" value="登入">
+        </form>
+    </div>
+
+</body>
+
+<script>
+    $(document).ready(function () {
+        $('#login_form').on('submit', function (e) {
+            e.preventDefault();
+            let username = document.getElementById('username_id').value
+            console.log(username)
+            let password = document.getElementById('password_id').value
+            console.log(password)
+            let data = {
+                "username": username,
+                "password": password
+            }
+            $.post({
+                url: "http://localhost:5432",
+                method: "post",
+                contentType: "application/json",
+                data: JSON.stringify(data),
+                success: function (res) {
+                    if (res.status === 0) {
+                        console.log(res.msg)
+                        window.location.href = '/backOrder'
+                    } else {
+                        console.log(res.msg)
+                        alert('密碼錯誤')
+                    }
+                },
+                error: function (err) {
+                    console.log(err.msg);
+
+                }
+            })
+        })
+    })
+</script>
+
+</html>

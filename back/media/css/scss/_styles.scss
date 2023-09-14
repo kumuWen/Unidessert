@@ -1,0 +1,127 @@
+@import url('https://api.fontshare.com/v2/css?f[]=gambetta@400,1,300,600,701,2,501,401,301,601,500,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Satisfy&display=swap');
+
+$primary-color:#702F43;
+$secondary-color:#CC7F91;
+$write-color:#EADFD9;
+$font-h1: 54px;
+$font-h2: 42px;
+$font-noto: 'Noto Sans TC', sans-serif;
+$font-gam: 'Gambetta', serif;
+
+//清樣式
+*{
+    margin: 0;
+    padding: 0;
+}
+ul,li{
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+}
+
+.container-uni{
+    margin: auto;
+    width: 90%;
+    max-width: 1140px;
+}
+.row-uni{
+    display: flex;
+    flex-wrap: wrap;//換行
+}
+//文字樣式
+// .text-center{
+//     text-align: center;
+// }
+.text-right{
+    text-align: right;
+}
+.text-left{
+    text-align: left;
+}
+.text-justify{
+    text-align:justify;
+}
+
+//圖片樣式
+.img-95{
+    width: 95%;
+}
+.img-fluid{
+    width: 100%;
+}
+.img-rounded{
+    border-radius: 8px;
+}
+.img-circle{
+    border-radius: 100%;
+}
+.relative{
+    position: relative;
+}
+.absolute{
+    position: absolute;
+}
+.flex-center{
+    justify-content:center;
+}
+
+//文字大小
+@for $i from 1 through 10 {
+    .fz-#{$i}{
+        font-size: $i*1em;
+    }
+}
+//margin-bottom
+@for $i from 0 through 5 {
+    .mb-#{$i}-uni{
+        margin-bottom: $i * 1em;
+    }
+}
+@for $i from 1 through 12 {
+    .col-#{$i}-uni{
+        --num: calc(12 / #{$i});
+        width: calc(100% / var(--num) - 30px);
+        margin: 0px 15px 20px 15px;
+    }
+}
+@for $i from 1 through 12 {
+    .col-no-#{$i}{
+        --num: calc(12 / #{$i});
+        width: calc(100% / var(--num) - 30px);
+    }
+}
+@media (min-width:768px){
+    @for $i from 1 through 12 {
+        .col-md-#{$i}-uni{
+            --num: calc(12 / #{$i});
+            width: calc(100% / var(--num) - 30px);
+            margin: 0px 15px 0px 15px;
+        }
+    }
+} // 768px end
+@media (min-width:768px){
+    @for $i from 1 through 12 {
+        .col-md-no-#{$i}{
+            --num: calc(12 / #{$i});
+            width: calc(100% / var(--num) - 30px);
+            // margin: 0px 15px 0px 15px;
+        }
+    }
+} // 768px end
+
+@media (min-width:1200px){
+    @for $i from 1 through 12 {
+        .col-lg-#{$i}-uni{
+            --num: calc(12 / #{$i});
+            width: calc(100% / var(--num) - 30px);
+            margin: 0px 15px 0px 15px;
+        }
+    }
+} // 1200px end
+@media (min-width:768px){
+    .order-md-1-uni{
+        order:-1;
+    }
+}
