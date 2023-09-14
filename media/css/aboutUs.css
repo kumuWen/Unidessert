@@ -1,0 +1,65 @@
+@import url('https://api.fontshare.com/v2/css?f[]=gambetta@400,1,300,600,701,2,501,401,301,601,500,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&family=Satisfy&display=swap');
+
+
+/* #abouttrand{
+font-size: 2.5rem;
+writing-mode: vertical-rl; 
+padding-top: 75%; 
+} */
+
+iframe {
+    position: relative;
+    top: -100px;
+    left: 38%;
+    max-width: 100%;
+    margin-right: 150px;
+    width: 1000px;
+    height: 450px;
+
+}
+
+#aboutcontent1{
+  font-size: 2rem;
+  line-height: 5rem;
+}
+#aboutcontent2{
+    font-size: 2rem;
+    line-height: 3rem;
+}
+#abouttrand{
+    padding-top:50px ;
+    font-size: 2rem;
+}
+#aboutpic{
+    max-width: 100%;display:inline-block;width: 500px;margin: 50px
+}
+#shoppic{
+    max-width: 100%;;display:inline-block;
+}
+
+@media screen and (max-width: 768px) {
+#aboutcontent1{
+  font-size: 1.5rem;
+   line-height: 3rem;
+}
+#aboutcontent2{
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+#aboutpic{
+   padding-top: 150px;
+}
+#shoppic{
+ padding-top: 50px;
+ width: 100%;
+ height: auto;
+}
+iframe {
+    align-items: center;
+    margin: 100px;
+    width: 500px;
+    height: 450px;
+    left: 0%;
+}
+}

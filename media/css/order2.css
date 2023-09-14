@@ -1,0 +1,134 @@
+body {
+    background-color: #EADFD9 !important;
+    font-family: "gambetta", "noto sans tc";
+}
+#cartform {
+    margin-bottom: 2%;
+}
+
+.statement {
+    display: flex;
+    margin-top: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input[type=submit], input[type=text], input[type=email], input[type=tel], input[type=date] {
+    width: 100%;
+    display: inline-block;
+    border: 2px solid #702F43;
+    font-size: 1.5rem;
+    font-family: "Noto Sans TC", sans-serif;
+    color: #702F43;
+    box-sizing: border-box;
+  }
+.mycontainer {
+    margin-top: 20px;
+}
+
+.mycontainer .topic {
+    font-size: 2rem;
+
+}
+
+.card {
+    margin: 0;
+}
+
+#order_info_card {
+    position: fixed;
+    z-index: -1;
+}
+/* #add_order_info_card {
+    position: absolute;
+    top: 1258.99;
+    left: 868.89;
+} */
+
+.card-body {
+    font-size: 1.5rem;
+}
+
+
+#address {
+    width: 80%;
+}
+
+.form-group {
+    display: flex;
+}
+
+#recipient {
+    width: 20%
+}
+
+#tel {
+    width: 50%
+}
+
+#email {
+    width: 50%
+}
+
+#arrive {
+    width: 40%;
+}
+
+#credit-number {
+    width: 40%;
+}
+
+#Invoice-title {
+    width: 40%;
+}
+
+#VAT-number {
+    width: 40%;
+}
+
+#phoneInfo {
+    width: 40%;
+}
+
+#naturalInfo {
+    width: 40%;
+}
+
+#date{
+    width: 40%;
+}
+
+
+
+/* .container input {
+    padding: 10px 10px;
+    margin: 10px;
+} */
+
+::placeholder {
+    font-size: 1.5rem;
+}
+
+.mycontainer .button-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mycontainer .button-row input {
+    padding: 10px;
+    background-color: #F0C7CD;
+    border-radius: 15px;
+    margin: 10px;
+}
+
+
+.mycontainer .my-button {
+    color: #702F43;
+    padding: 10px;
+    background-color: #F0C7CD ;
+    border-radius: 15px;
+    margin: 10px;
+    border: 2px solid #702F43;
+    font-weight: 500;
+}

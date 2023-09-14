@@ -1,0 +1,111 @@
+    body {
+        background-color: #EADFD9 !important;
+        font-family: "gambetta", "noto sans tc";
+    }
+
+    .statement {
+        display: flex;
+        margin-top: 150px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .fz-3r{
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #702F43;
+        /* background-color: #F0C7CD; */
+    }
+    .topic {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #B44A60;
+        background-color: #F0C7CD;
+    }
+    .finish {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .bigform {
+        background-color: #f2f2f2;
+
+    }
+
+    .mycontainer {
+        margin-top: 150px;
+    }
+
+    .table {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 50px;
+
+    }
+
+    .table-header {
+        display: flex;
+        align-items: center;
+        /* background-color: #f2f2f2; */
+        font-weight: bold;
+        padding: 10px;
+        font-size: 2rem;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .table-row {
+        /* display: flex; */
+        align-items: center;
+    }
+
+    .table-row1 {
+        /* background-color: #f2f2f2; */
+        border-bottom: 1px solid #ddd;
+
+    }
+
+    .table-cell {
+        padding: 10px;
+        text-align: left;
+        font-size: 1.5rem;
+    }
+    .p-10{
+        padding: 10px 0px;
+        text-align: center;
+    }
+    .m-10{
+        margin: 10px 0px;
+    }
+    .item>button {
+        border: none;
+    }
+
+    .hot {
+        font-size: 2rem;
+    }
+
+    @media (max-width: 768px) {
+
+        .table-header,
+        .table-cell {
+            font-size: 0.8rem;
+        }
+
+        .topic {
+            font-size: 1rem;
+        }
+
+        .hot {
+            font-size: 1rem;
+        }
+
+        .owl-carousel .intro {
+            font-size: 0.8rem;
+        }
+
+        .mycontainer .product-info>img {
+            width: 100px;
+        }
+
+    }
